@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexus Mobile Docs Rebrand Check</title>
+<meta name="description" content="Site24x7 vs OpManager Nexus cloud mobile app help docs: what changed, what still says Site24x7, and what to fix.">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F6F5; --surface:#FFFFFF; --sunk:#E8EEEC; --ink:#15201D; --ink-2:#4A5A55; --ink-3:#71807B;
+  --line:#D5DFDC; --accent:#0B7A66; --accent-ink:#FFFFFF; --accent-soft:#DDF1EC;
+  --android:#3A8F2F; --android-soft:#E3F2DF; --ios:#2F6FD0; --ios-soft:#E1ECFB; --both:#6B5CA8; --both-soft:#ECE8F7;
+  --crit:#B42318; --crit-soft:#FCE9E7; --warn:#A15C00; --warn-soft:#FDF0DC;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0F1614; --surface:#16201D; --sunk:#1D2926; --ink:#E6EEEB; --ink-2:#A9B8B3; --ink-3:#7F8F8A;
+    --line:#2A3834; --accent:#3CC4A6; --accent-ink:#06201A; --accent-soft:#163A32;
+    --android:#7BCB6E; --android-soft:#1C3319; --ios:#78A8F2; --ios-soft:#172A45; --both:#AD9EEA; --both-soft:#2A2442;
+    --crit:#F2877C; --crit-soft:#3A1C19; --warn:#EDB25C; --warn-soft:#3A2A12;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F1614; --surface:#16201D; --sunk:#1D2926; --ink:#E6EEEB; --ink-2:#A9B8B3; --ink-3:#7F8F8A;
+  --line:#2A3834; --accent:#3CC4A6; --accent-ink:#06201A; --accent-soft:#163A32;
+  --android:#7BCB6E; --android-soft:#1C3319; --ios:#78A8F2; --ios-soft:#172A45; --both:#AD9EEA; --both-soft:#2A2442;
+  --crit:#F2877C; --crit-soft:#3A1C19; --warn:#EDB25C; --warn-soft:#3A2A12;
+}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+header.top{display:grid;gap:18px;margin-bottom:22px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+h1{font:700 clamp(28px,4.2vw,42px)/1.08 var(--display);margin:6px 0 0;text-wrap:balance;letter-spacing:-.01em}
+.lede{color:var(--ink-2);max-width:66ch;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.stat b{font:600 28px/1.1 var(--mono);font-variant-numeric:tabular-nums}
+.stat span{color:var(--ink-2);font-size:13px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:26px;scrollbar-width:none}
+nav.tabs button{flex:none;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-2);font:500 14px var(--body);padding:12px 12px 10px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:hover{color:var(--ink)}
+section.panel{display:grid;gap:26px}
+h2{font:700 24px/1.2 var(--display);margin:0;text-wrap:balance}
+h3{font:600 16px/1.3 var(--body);margin:0}
+p{margin:0}
+.intro{color:var(--ink-2);max-width:70ch}
+.block{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);background:var(--sunk);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.q{font-family:var(--mono);font-size:13px;background:var(--sunk);padding:1px 5px;border-radius:4px;word-break:break-word}
+.pill{display:inline-flex;align-items:center;gap:5px;font:500 12px/1 var(--mono);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.p-android{background:var(--android-soft);color:var(--android)}
+.p-ios{background:var(--ios-soft);color:var(--ios)}
+.p-both{background:var(--both-soft);color:var(--both)}
+.yes{color:var(--accent);font-weight:600}
+.no{color:var(--ink-3)}
+.prio{display:grid;gap:10px;counter-reset:p;padding:0;margin:0;list-style:none}
+.prio li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.sev{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
+.sev.crit{background:var(--crit-soft);color:var(--crit)}
+.sev.warn{background:var(--warn-soft);color:var(--warn)}
+.prio p{color:var(--ink-2);font-size:14px;margin-top:3px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ul.plain{margin:0;padding-left:18px;display:grid;gap:6px}
+ul.plain li::marker{color:var(--ink-3)}
+.issues{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.issues li{padding:10px 12px 10px 14px;border-left:3px solid var(--warn);background:var(--surface);border-radius:0 8px 8px 0;font-size:14px}
+.issues li.crit{border-left-color:var(--crit)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);font:500 13px var(--body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.feat-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
+.srcs{font-size:13px;color:var(--ink-3);display:flex;gap:12px}
+.common{font-size:14px;color:var(--ink-2)}
+.common b{color:var(--ink)}
+.bars{display:grid;gap:10px}
+.bar-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:12px;align-items:center}
+.bar-label{font-size:13px;color:var(--ink-2)}
+.bar-set{display:grid;gap:3px}
+.bar{display:flex;align-items:center;gap:8px;font:500 12px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.bar i{display:block;height:12px;border-radius:0 3px 3px 0;min-width:2px}
+.bar.a i{background:var(--android)} .bar.i i{background:var(--ios)} .bar.s i{background:var(--both)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.names{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.name{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:3px}
+.name code{font:500 13px var(--mono)}
+.name span{font-size:12px;color:var(--ink-3)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filters input,.filters select{font:14px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.filters input{flex:1 1 220px;min-width:0}
+.count{font:500 13px var(--mono);color:var(--ink-3)}
+.copy{background:none;border:1px solid var(--line);color:var(--ink-2);font:500 12px var(--mono);padding:4px 8px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.copy:hover{color:var(--ink);border-color:var(--ink-3)}
+.fix-new{color:var(--accent)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:grid;gap:4px}
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:1fr;gap:4px}
+  .wrap{padding-inline:16px}
+}
+@media (prefers-reduced-motion:no-preference){ .panel{animation:fade .2s ease-out} @keyframes fade{from{opacity:.4}to{opacity:1}} }
+</style>
+<style>
+:root{color-scheme:light}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+.shot{background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:grid;grid-template-rows:auto 1fr}
+.shot button{all:unset;cursor:zoom-in;display:block;background:var(--sunk);aspect-ratio:9/16;max-width:100%}
+.shot button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.shot img{width:100%;height:100%;object-fit:contain;display:block}
+.shot div{padding:10px 12px;display:grid;gap:3px;font-size:13px}
+.shot b{font-weight:600}
+.shot span{color:var(--ink-2)}
+.shot code{font:500 11px var(--mono);color:var(--ink-3);word-break:break-all}
+dialog{border:0;padding:0;background:transparent;max-width:min(92vw,520px)}
+dialog::backdrop{background:rgba(8,14,12,.75)}
+dialog img{max-height:86vh;width:auto;max-width:100%;border-radius:10px;display:block;margin:0 auto}
+dialog p{color:#fff;text-align:center;margin-top:10px;font-size:14px}
+.verdict{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.verdict .card{display:grid;gap:6px}
+.verdict .card b{font:600 13px var(--mono);letter-spacing:.05em;text-transform:uppercase}
+.ok b{color:var(--accent)} .bad b{color:var(--crit)} .ask b{color:var(--warn)}
+.verdict p{font-size:14px;color:var(--ink-2)}
+@media (max-width:760px){.verdict{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Help docs review · Mobile Apps · 28 Sep 2026</div>
+      <h1>Site24x7 → OpManager Nexus cloud</h1>
+    </div>
+    <p class="lede">The OpManager Nexus cloud mobile app help pages are a copy of the Site24x7 pages with the product name swapped. This report lists what changed, what still says Site24x7, and what the product team needs to confirm before the pages go live.</p>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b>19</b><span>page pairs compared</span></div>
+      <div class="stat" role="listitem"><b>95/99</b><span>"Site24x7" mentions renamed</span></div>
+      <div class="stat" role="listitem"><b>13 + 11</b><span>leftover references + branded screenshots</span></div>
+      <div class="stat" role="listitem"><b>30</b><span>copy fixes (23 inherited, 7 new)</span></div>
+    </div>
+  </header>
+  <nav class="tabs" role="tablist" aria-label="Sections" id="tabs"></nav>
+  <main id="view"></main>
+  <footer>
+    <span>Nexus pages fetched 28 Sep 2026 from the staging host www.localmanageengine.com/it-operations-management/cloud-help/native-apps/ (canonical: www.manageengine.com). Site24x7 pages fetched 24–28 Sep 2026 from www.site24x7.com/help/native-apps/.</span>
+    <span>Counts cover page content only, not the menu or footer.</span>
+  </footer>
+</div>
+<dialog id="zoom"><img id="zoom-img" alt=""><p id="zoom-cap"></p></dialog>
+
+<script>
+const NX = "https://www.localmanageengine.com/it-operations-management/cloud-help/native-apps/";
+const S24 = "https://www.site24x7.com/help/native-apps/";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const q = s => `<span class="q">${esc(s)}</span>`;
+const pill = p => `<span class="pill p-${p.toLowerCase()}">${p}</span>`;
+const table = (head, rows) => `<div class="tablebox"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+const issuesList = arr => `<ul class="issues">${arr.map(([c,t])=>`<li class="${c?"crit":""}">${esc(t)}</li>`).join("")}</ul>`;
+const link = (href, text) => `<a href="${href}" target="_blank" rel="noopener">${esc(text)}</a>`;
+
+const MAP = [
+  ["Mobile Apps (main)","",17,0,"None"],
+  ["Android overview","android/",6,1,"One \"Site24x7's\" left in the use case"],
+  ["iOS overview","ios/",9,1,"Release-notes link replaced by an inline iOS 26 section; one \"Site24x7's\" left"],
+  ["Alarms","android/alarms.html|ios/alarms.html","1, 2",0,"None"],
+  ["Monitors","android/monitors.html|ios/monitors.html","2, 2",0,"None"],
+  ["Reports","android/reports.html|ios/reports.html","1, 1",0,"None"],
+  ["Admin","android/admin.html|ios/admin.html","10, 10","1, 1","\"site24x7.com\" left in Device Key"],
+  ["More settings","android/android-settings.html|ios/ios-settings.html","3, 3",0,"None"],
+  ["Other accounts","android/msp-bu-accounts.html|ios/msp-bu-accounts.html","3, 1",0,"None"],
+  ["Zia","android/zia-bot.html|ios/zia-bot.html","4, 4",0,"None"],
+  ["iOS release notes","ios/release-notes.html",3,0,"Heading levels changed"],
+  ["Latest iOS features","ios/features.html",17,0,"3 steps reworded; new spacing errors"]
+];
+const LEFT = [
+  ["Android + iOS overview","Use case","\"With Site24x7's instant alerts…\"","\"With OpManager Nexus's instant alerts…\""],
+  ["Admin (Android + iOS)","Device Key","\"push performance metrics to site24x7.com\"","The Nexus endpoint, or drop the domain"],
+  ["Mobile Apps (main)","App Store buttons (iPhone, iPad, TV)","apps.apple.com/…/site24x7/id538759565","Confirm the app Nexus users install"],
+  ["Mobile Apps (main)","Play Store button","com.adventnet.webmon.android (the Site24x7 app)","Same check"],
+  ["Main, Other accounts (Android + iOS)","Related article","www.site24x7.com/mobile-apps.html","A Nexus product page, or remove"],
+  ["Zia (Android + iOS)","LLM integration FAQ","support.site24x7.com/…/how-to-integrate-site24x7-with-openai-chatgpt","A Nexus KB article"]
+];
+const SHOTS = [
+  ["try-demo-android.png","Android overview","Large Site24x7 logo and tagline on the welcome screen"],
+  ["try-demo-ios.png","iOS overview","\"ManageEngine Site24x7\" logo and tagline"],
+  ["ios27-operations-view-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
+  ["ios27-monitor-group-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
+  ["ios27-assign-technician.png","Latest iOS features","\"Site24x7\" in the Spotlight result"],
+  ["ios-mobile-notification-settings.png","iOS settings","Every tone named \"Site24x7 (Default)\""],
+  ["android_mobile_notifications_os.png","Android settings","System notifications labelled \"Site24x7\""],
+  ["android_mobile_alarms_details.png","Android alarms","Commenter \"Site24x7 - Monitoring Service\""],
+  ["android-mobile-it-automation-notification.png","Android admin","\"…approve the push notification in the Site24x7 Mobile Application\""],
+  ["android-mobile-confirmation-it-automation.png","Android admin","Same dialog, after approval"],
+  ["mobile-app-banner-tv-app.png","Mobile Apps (main)","Small \"Site24x7\" monitor names in the TV NOC View"]
+];
+const CONFIRM = [
+  ["MSP Dashboard and MSP Admin/Operator roles","Main page, Other accounts, Settings","Does Nexus cloud offer MSP accounts?"],
+  ["Business Unit Portal and BU roles","Main page, Other accounts","Does Nexus cloud have Business Units?"],
+  ["Cost Admin and Cost User roles","Main page","Do these roles exist in Nexus?"],
+  ["\"130 global monitoring locations\"","Admin","Is 130 the Nexus figure?"],
+  ["Mobile Network Poller","Admin","Is it available in Nexus?"],
+  ["Real User Monitors; Log Report \"except APM and RUM\"","Monitors, Admin","Does Nexus support RUM and APM?"],
+  ["Sign Up, then add a website URL; \"Try other 160+ Monitors\"","Main page, sign-up screenshot","Can users sign up for Nexus in the app, and is 160+ right?"],
+  ["Try Demo mode","Platform pages","Does the demo show Nexus data?"],
+  ["Monthly Newsletter","Settings","Nexus's newsletter or Site24x7's?"],
+  ["Service Status","Platform pages, Settings","Nexus status or Site24x7 status?"],
+  ["Uptime Button, Public Reports, Operations Dashboard","Admin","Are these Nexus features?"],
+  ["Azure users","Admin","Does Nexus support Azure user sign-in?"],
+  ["Zia \"alert credits\"","Zia screenshot (iOS)","Does Nexus bill alerts in credits?"],
+  ["App Store \"site24x7\" and Play com.adventnet.webmon.android","Main page","Do Nexus users install the Site24x7 app? If so, say so plainly"]
+];
+const NEW_ISSUES = [
+  [1,"iOS overview: no page links to the iOS release notes any more. The link was replaced by an inline section, so the release notes and Latest iOS features pages can't be reached from the iOS help page."],
+  [1,"iOS overview: the inline section covers iOS 26 only, although the release notes list iOS 27 (14 Sep 2026)."],
+  [0,"iOS release notes: the page title reads \"Online OpManager Nexus\", a leftover of \"Online Help Site24x7\"."],
+  [0,"iOS release notes: \"What's new\" is plain text under iOS 26 but a heading under iOS 27."],
+  [0,"Latest iOS features: new stray spaces in \"Monitor Groups .\", \"Home Screen .\" (twice), \"Monitors , Alarms , Dashboard ,\" and \"Alarm Details ,\"."],
+  [0,"Latest iOS features: missing space in \"on the go.Learn how\"."],
+  [0,"Latest iOS features: the assign-technician step drops \"select Done\". Check it against the app."]
+];
+const CARRIED = [
+  [1,"Admin (both): a raw \"global.template\" string key shows as an option label under Monitor Groups."],
+  [1,"Service Status is described two ways: \"the status of your monitors\" (Settings) vs the account domain's service status (platform pages)."],
+  [0,"Conf XML sits on the Android accounts page and the iOS Settings page, and reads like developer material on both."],
+  [0,"iOS Settings text says \"Touch ID/Passcode\", but the app's own screenshot shows \"Face ID/Passcode\"."],
+  [0,"Android Monitors links to \"android-settings\" without \".html\", which returns 404 (on Site24x7 too)."]
+];
+const CHANGES = [
+  ["iOS overview","\"Explore Apple's latest iOS features supported in Site24x7\" + link to release notes","\"Features of iOS 26 with Liquid Glass UI in OpManager Nexus\", an inline iOS 26 feature list with no link"],
+  ["iOS release notes","Release headings H3, \"What's new\" H4","Release headings H2, \"What's new\" H3 (plain text under iOS 26)"],
+  ["Latest iOS features","\"Type your comment.\"","\"Enter and Save your comment.\""],
+  ["Latest iOS features","\"Confirm the assignment is correct, and select Done.\"","\"Confirm the assignment.\""],
+  ["Latest iOS features","\"Open Down Monitor(s)\" etc.","\"Open Down Monitors\" etc."]
+];
+const FIXES = [
+  ["iOS overview","iOS","IT Health and Anomalie widgets","IT Health and Anomaly widgets","Inherited"],
+  ["iOS overview","iOS","different data-centre accounts","different data center accounts","Inherited"],
+  ["iOS overview","iOS","address issues and optimize operations from anywhere promptly","address issues promptly and optimize operations from anywhere","Inherited"],
+  ["Admin","Both","global.template","Template","Inherited"],
+  ["Monitors","iOS","navigate tot he Monitor page","navigate to the Monitor page","Inherited"],
+  ["Monitors","iOS","Monitors Types","Monitor Types","Inherited"],
+  ["Monitors","iOS","PDF Generation: Click the graph icon…","Performance Report: Click the graph icon…","Inherited"],
+  ["More settings","Android","tones for the statues Up, Down…","tones for the statuses Up, Down…","Inherited"],
+  ["More settings","iOS","iOS app: iOS settings","iOS app: Settings","Inherited"],
+  ["Admin","iOS","Clicking theTag icon","Clicking the Tag icon","Inherited"],
+  ["Admin","Both","a Uptime Button","an Uptime Button","Inherited"],
+  ["Admin","Both","a SLA setting","an SLA setting","Inherited"],
+  ["Admin","Android","Section list \"Poller\", heading \"Pollers\"","Use \"Poller\" for both","Inherited"],
+  ["Alarms","iOS","iOS App: Alarms","iOS app: Alarms","Inherited"],
+  ["Alarms","Both","Click the  to assign / Click on the to assign","Tap the Assign Technician icon to assign","Inherited"],
+  ["Other accounts","Both","Logging in with your MSP account, will take you","Logging in with your MSP account will take you","Inherited"],
+  ["Other accounts","Android","Alarm's widget","Alarm widget","Inherited"],
+  ["iOS release notes","iOS","iOS 27 | [ 14 September 2026]","iOS 27 — 14 September 2026","Inherited"],
+  ["iOS release notes","iOS","Operations View and Monitor Groups , providing","Operations View and Monitor Groups, providing","Inherited"],
+  ["iOS release notes","iOS","from the Home Screen .","from the Home Screen.","Inherited"],
+  ["iOS release notes","iOS","Monitor Details, Alarm Details , and Anomaly Details","Monitor Details, Alarm Details, and Anomaly Details","Inherited"],
+  ["iOS release notes","iOS","in Down , Critical , or Trouble status","in Down, Critical, or Trouble status","Inherited"],
+  ["iOS release notes","iOS","help documentation .","help documentation.","Inherited"],
+  ["Android + iOS overview","Both","With Site24x7's instant alerts","With OpManager Nexus's instant alerts","New"],
+  ["Admin","Both","push performance metrics to site24x7.com","push performance metrics to OpManager Nexus","New"],
+  ["iOS release notes","iOS","Online OpManager Nexus (page title)","Online Help OpManager Nexus","New"],
+  ["Latest iOS features","iOS","Monitor Groups .","Monitor Groups.","New"],
+  ["Latest iOS features","iOS","Home Screen . (twice)","Home Screen.","New"],
+  ["Latest iOS features","iOS","Monitors , Alarms , Dashboard , and Outages","Monitors, Alarms, Dashboard, and Outages","New"],
+  ["Latest iOS features","iOS","on the go.Learn how","on the go. Learn how","New"]
+];
+
+const VIEWS = {
+ summary:{label:"Summary", render:()=>`
+  <section class="panel">
+    <div class="verdict">
+      <div class="card ok"><b>Done well</b><p>Page titles, meta descriptions, headings, role names and all 120 internal links now point to Nexus. 16 of 19 pages are word-for-word identical apart from the rename.</p></div>
+      <div class="card bad"><b>Still Site24x7</b><p>4 text mentions, 9 links (App Store, Play Store, site24x7.com, support.site24x7.com) and 11 screenshots with Site24x7 branding.</p></div>
+      <div class="card ask"><b>Needs a product call</b><p>14 claims copied from Site24x7, such as MSP and BU accounts, 130 locations, RUM and APM, and the Site24x7 app listing, may not be true for Nexus.</p></div>
+    </div>
+    <div class="block"><h2>Fix these first</h2><ol class="prio">
+      <li><span class="sev crit">High</span><div><h3>App Store and Play Store buttons open the Site24x7 app</h3><p>The listing is literally named "site24x7". Confirm this is the app Nexus users should install. If it is, say so on the page.</p></div></li>
+      <li><span class="sev crit">High</span><div><h3>Device Key still says data goes "to site24x7.com"</h3><p>On both Admin pages. For a Nexus customer that reads as their data going to another product.</p></div></li>
+      <li><span class="sev crit">High</span><div><h3>Nothing links to the iOS release notes</h3><p>The iOS overview's link was replaced by an inline iOS 26 list, so the release notes and the Latest iOS features pages can't be reached from the iOS help page.</p></div></li>
+      <li><span class="sev warn">Medium</span><div><h3>11 screenshots show Site24x7 branding</h3><p>They include the welcome screens, the iOS 27 widgets, notification labels and the IT Automation prompt. Retake them if there's a Nexus-branded build.</p></div></li>
+      <li><span class="sev warn">Medium</span><div><h3>No Site24x7 copy fixes were carried across</h3><p>All 23 known typos, including "global.template", came across unfixed. Fix them once in both sites.</p></div></li>
+    </ol></div>
+  </section>`},
+ map:{label:"Page map", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>Page-by-page</h2><p class="intro">Every Site24x7 page has a Nexus page at the same path. No pages were added or removed. Only 3 of 19 pages differ in anything beyond the name.</p>
+    ${table(["Page","Nexus","Site24x7","\"Site24x7\" before → after","Change beyond the rename"],MAP.map(r=>{
+      const paths=r[1].split("|");
+      const nx=paths.length>1?`${link(NX+paths[0],"Android")} · ${link(NX+paths[1],"iOS")}`:link(NX+paths[0],"Open");
+      const s=paths.length>1?`${link(S24+paths[0],"Android")} · ${link(S24+paths[1],"iOS")}`:link(S24+paths[0],"Open");
+      return [esc(r[0]),nx,s,`<span class="q">${esc(r[2])} → ${esc(r[3])}</span>`,esc(r[4])];}))}</div>
+    <div class="block"><h3>Content changes beyond the rename</h3>
+    ${table(["Page","Site24x7","OpManager Nexus"],CHANGES.map(r=>[esc(r[0]),q(r[1]),`<span class="q fix-new">${esc(r[2])}</span>`]))}
+    <p class="intro">Check the three reworded Latest iOS features steps against the Nexus app's actual labels. If they don't match, the Site24x7 wording may be the accurate one.</p></div>
+  </section>`},
+ leftovers:{label:"Rename leftovers", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>13 places still say Site24x7</h2><p class="intro">4 are in the text and 9 are links. The branded screenshots are listed separately under Screenshots.</p>
+    ${table(["Page","Where","Now","Change to"],LEFT.map(r=>[esc(r[0]),esc(r[1]),q(r[2]),`<span class="q fix-new">${esc(r[3])}</span>`]))}</div>
+  </section>`},
+ shots:{label:"Screenshots", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>11 of 82 screenshots show Site24x7 branding</h2><p class="intro">All 113 images on the Nexus pages (82 screenshots, 31 icons) are byte-for-byte copies of the Site24x7 files. Every screenshot was checked with text recognition and by eye. The other 71 screenshots and all icons show only neutral UI and "Zylker" sample data. Click a screenshot to enlarge it.</p></div>
+    <div class="gallery">${SHOTS.map((s,i)=>`<figure class="shot" style="margin:0"><button data-i="${i}" aria-label="Enlarge ${esc(s[0])}"><img src="images/${s[0]}" alt="${esc(s[2])}" loading="lazy"></button><div><b>${esc(s[1])}</b><span>${esc(s[2])}</span><code>${esc(s[0])}</code></div></figure>`).join("")}</div>
+    <p class="intro">If Nexus users install the Site24x7 app, these screenshots are accurate but look off-brand next to Nexus text. If there's a Nexus-branded build, all 11 need retaking.</p>
+  </section>`, after:()=>{
+    const dlg=document.getElementById("zoom");
+    document.querySelectorAll(".shot button").forEach(b=>b.addEventListener("click",()=>{
+      const s=SHOTS[+b.dataset.i]; document.getElementById("zoom-img").src="images/"+s[0];
+      document.getElementById("zoom-img").alt=s[2]; document.getElementById("zoom-cap").textContent=s[1]+": "+s[2];
+      dlg.showModal?dlg.showModal():dlg.setAttribute("open","");
+    }));
+    dlg.addEventListener("click",()=>dlg.close());
+  }},
+ confirm:{label:"Confirm for Nexus", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>Site24x7 claims to confirm</h2><p class="intro">The rename changed only the name. Every claim about what the product offers was copied over unchanged. Each of these is true for Site24x7 and needs a product owner's yes or no for OpManager Nexus cloud.</p>
+    ${table(["Claim carried over","Where","Question for the product team"],CONFIRM.map(r=>r.map(esc)))}</div>
+  </section>`},
+ issues:{label:"Issues", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>New on the Nexus side (7)</h2>${issuesList(NEW_ISSUES)}</div>
+    <div class="block"><h2>Carried over from Site24x7</h2><p class="intro">All 23 Site24x7 copy fixes and these content issues appear on the Nexus pages unchanged.</p>${issuesList(CARRIED)}</div>
+  </section>`},
+ fixes:{label:"Copy fixes", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>30 copy fixes for the Nexus pages</h2><p class="intro">23 are inherited from Site24x7 (fixing them there helps both sites), and 7 are new on Nexus. Filter or search, and use the button on each row to copy the replacement text.</p>
+      <div class="filters">
+        <input id="fx-q" type="search" placeholder="Search current or suggested text" aria-label="Search fixes">
+        <select id="fx-src" aria-label="Origin"><option value="">All fixes</option><option>Inherited</option><option>New</option></select>
+        <select id="fx-page" aria-label="Page"><option value="">All pages</option>${[...new Set(FIXES.map(f=>f[0]))].map(p=>`<option>${esc(p)}</option>`).join("")}</select>
+        <span class="count" id="fx-count"></span>
+      </div></div>
+    <div id="fx-table"></div>
+  </section>`, after:()=>{
+    const qi=document.getElementById("fx-q"), sr=document.getElementById("fx-src"), pg=document.getElementById("fx-page");
+    const draw=()=>{
+      const s=qi.value.trim().toLowerCase();
+      const rows=FIXES.map((f,i)=>[f,i]).filter(([f])=>(!sr.value||f[4]===sr.value)&&(!pg.value||f[0]===pg.value)&&(!s||(f[2]+" "+f[3]).toLowerCase().includes(s)));
+      document.getElementById("fx-count").textContent=`${rows.length} of ${FIXES.length}`;
+      document.getElementById("fx-table").innerHTML=rows.length?table(["Page","Platform","Current text","Suggested fix","Origin",""],rows.map(([f,i])=>[esc(f[0]),pill(f[1]),q(f[2]),`<span class="q fix-new">${esc(f[3])}</span>`,esc(f[4]),`<button class="copy" data-i="${i}">Copy fix</button>`])):`<p class="intro">No fixes match. Clear the search or filters.</p>`;
+    };
+    [qi,sr,pg].forEach(el=>el.addEventListener("input",draw));
+    document.getElementById("fx-table").addEventListener("click",e=>{
+      const b=e.target.closest(".copy"); if(!b) return;
+      const done=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy fix",1400)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(FIXES[+b.dataset.i][3]).then(done).catch(()=>{b.textContent="Select text"})}else{b.textContent="Select text"}
+    });
+    draw();
+  }}
+};
+
+const tabs=document.getElementById("tabs"), view=document.getElementById("view"), keys=Object.keys(VIEWS);
+tabs.innerHTML=keys.map(k=>`<button role="tab" id="t-${k}" data-k="${k}" aria-selected="false">${VIEWS[k].label}</button>`).join("");
+function show(k,push){
+  if(!VIEWS[k]) k="summary";
+  tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
+  view.innerHTML=VIEWS[k].render(); VIEWS[k].after&&VIEWS[k].after();
+  if(push){ try{history.replaceState(null,"","#"+k)}catch(e){location.hash=k} }
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest("button"); if(b) show(b.dataset.k,true);});
+tabs.addEventListener("keydown",e=>{
+  if(!["ArrowRight","ArrowLeft"].includes(e.key)) return;
+  const i=keys.indexOf(document.activeElement.dataset.k); if(i<0) return;
+  const n=keys[(i+(e.key==="ArrowRight"?1:keys.length-1))%keys.length]; show(n,true); document.getElementById("t-"+n).focus();
+});
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+show(location.hash.slice(1)||"summary");
+</script>
+</body>
+</html>
