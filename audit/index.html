@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Review of the Site24x7 Mobile Apps help pages, compared with their OpManager Nexus cloud copies.">
+<title>Site24x7 Mobile Docs Audit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F3F6F5; --surface:#FFFFFF; --sunk:#E8EEEC; --ink:#15201D; --ink-2:#4A5A55; --ink-3:#71807B;
+  --line:#D5DFDC; --accent:#0B7A66; --accent-ink:#FFFFFF; --accent-soft:#DDF1EC;
+  --android:#3A8F2F; --android-soft:#E3F2DF; --ios:#2F6FD0; --ios-soft:#E1ECFB; --both:#6B5CA8; --both-soft:#ECE8F7;
+  --crit:#B42318; --crit-soft:#FCE9E7; --warn:#A15C00; --warn-soft:#FDF0DC;
+  --display:"Bricolage Grotesque", "Avenir Next", system-ui, sans-serif;
+  --body:"IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --ground:#0F1614; --surface:#16201D; --sunk:#1D2926; --ink:#E6EEEB; --ink-2:#A9B8B3; --ink-3:#7F8F8A;
+    --line:#2A3834; --accent:#3CC4A6; --accent-ink:#06201A; --accent-soft:#163A32;
+    --android:#7BCB6E; --android-soft:#1C3319; --ios:#78A8F2; --ios-soft:#172A45; --both:#AD9EEA; --both-soft:#2A2442;
+    --crit:#F2877C; --crit-soft:#3A1C19; --warn:#EDB25C; --warn-soft:#3A2A12;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --ground:#0F1614; --surface:#16201D; --sunk:#1D2926; --ink:#E6EEEB; --ink-2:#A9B8B3; --ink-3:#7F8F8A;
+  --line:#2A3834; --accent:#3CC4A6; --accent-ink:#06201A; --accent-soft:#163A32;
+  --android:#7BCB6E; --android-soft:#1C3319; --ios:#78A8F2; --ios-soft:#172A45; --both:#AD9EEA; --both-soft:#2A2442;
+  --crit:#F2877C; --crit-soft:#3A1C19; --warn:#EDB25C; --warn-soft:#3A2A12;
+}
+*{box-sizing:border-box}
+img{max-width:100%}
+[hidden]{display:none!important}
+body{background:var(--ground);color:var(--ink);font:15px/1.55 var(--body);margin:0}
+a{color:var(--accent);text-underline-offset:2px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+header.top{display:grid;gap:18px;margin-bottom:22px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+h1{font:700 clamp(28px,4.2vw,42px)/1.08 var(--display);margin:6px 0 0;text-wrap:balance;letter-spacing:-.01em}
+.lede{color:var(--ink-2);max-width:66ch;margin:0}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.stat{background:var(--surface);padding:14px 16px;display:grid;gap:2px}
+.stat b{font:600 28px/1.1 var(--mono);font-variant-numeric:tabular-nums}
+.stat span{color:var(--ink-2);font-size:13px}
+nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line);margin-bottom:26px;scrollbar-width:none}
+nav.tabs button{flex:none;background:none;border:0;border-bottom:2px solid transparent;color:var(--ink-2);font:500 14px var(--body);padding:12px 12px 10px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:hover{color:var(--ink)}
+section.panel{display:grid;gap:26px}
+h2{font:700 24px/1.2 var(--display);margin:0;text-wrap:balance}
+h3{font:600 16px/1.3 var(--body);margin:0}
+p{margin:0}
+.intro{color:var(--ink-2);max-width:70ch}
+.block{display:grid;gap:12px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 12px var(--mono);letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);background:var(--sunk);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
+.q{font-family:var(--mono);font-size:13px;background:var(--sunk);padding:1px 5px;border-radius:4px;word-break:break-word}
+.pill{display:inline-flex;align-items:center;gap:5px;font:500 12px/1 var(--mono);padding:5px 8px;border-radius:999px;white-space:nowrap}
+.p-android{background:var(--android-soft);color:var(--android)}
+.p-ios{background:var(--ios-soft);color:var(--ios)}
+.p-both{background:var(--both-soft);color:var(--both)}
+.yes{color:var(--accent);font-weight:600}
+.no{color:var(--ink-3)}
+.prio{display:grid;gap:10px;counter-reset:p;padding:0;margin:0;list-style:none}
+.prio li{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.sev{font:500 11px/1 var(--mono);letter-spacing:.06em;text-transform:uppercase;padding:6px 8px;border-radius:6px;white-space:nowrap}
+.sev.crit{background:var(--crit-soft);color:var(--crit)}
+.sev.warn{background:var(--warn-soft);color:var(--warn)}
+.prio p{color:var(--ink-2);font-size:14px;margin-top:3px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+ul.plain{margin:0;padding-left:18px;display:grid;gap:6px}
+ul.plain li::marker{color:var(--ink-3)}
+.issues{margin:0;padding:0;list-style:none;display:grid;gap:8px}
+.issues li{padding:10px 12px 10px 14px;border-left:3px solid var(--warn);background:var(--surface);border-radius:0 8px 8px 0;font-size:14px}
+.issues li.crit{border-left-color:var(--crit)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface);border:1px solid var(--line);color:var(--ink-2);font:500 13px var(--body);padding:7px 12px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.feat-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;align-items:baseline}
+.srcs{font-size:13px;color:var(--ink-3);display:flex;gap:12px}
+.common{font-size:14px;color:var(--ink-2)}
+.common b{color:var(--ink)}
+.bars{display:grid;gap:10px}
+.bar-row{display:grid;grid-template-columns:minmax(120px,190px) 1fr;gap:12px;align-items:center}
+.bar-label{font-size:13px;color:var(--ink-2)}
+.bar-set{display:grid;gap:3px}
+.bar{display:flex;align-items:center;gap:8px;font:500 12px var(--mono);font-variant-numeric:tabular-nums;color:var(--ink-2)}
+.bar i{display:block;height:12px;border-radius:0 3px 3px 0;min-width:2px}
+.bar.a i{background:var(--android)} .bar.i i{background:var(--ios)} .bar.s i{background:var(--both)}
+.legend{display:flex;gap:14px;font-size:13px;color:var(--ink-2);flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px;background:var(--c)}
+.names{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px}
+.name{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;gap:3px}
+.name code{font:500 13px var(--mono)}
+.name span{font-size:12px;color:var(--ink-3)}
+.filters{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.filters input,.filters select{font:14px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.filters input{flex:1 1 220px;min-width:0}
+.count{font:500 13px var(--mono);color:var(--ink-3)}
+.copy{background:none;border:1px solid var(--line);color:var(--ink-2);font:500 12px var(--mono);padding:4px 8px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.copy:hover{color:var(--ink);border-color:var(--ink-3)}
+.fix-new{color:var(--accent)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3);display:grid;gap:4px}
+@media (max-width:760px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .two{grid-template-columns:1fr}
+  .bar-row{grid-template-columns:1fr;gap:4px}
+  .wrap{padding-inline:16px}
+}
+@media (prefers-reduced-motion:no-preference){ .panel{animation:fade .2s ease-out} @keyframes fade{from{opacity:.4}to{opacity:1}} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow">Help docs review · Mobile Apps · 24–28 Sep 2026</div>
+      <h1>Site24x7 Mobile Docs Audit</h1>
+    </div>
+    <p class="lede">A review of the Mobile Apps help section on site24x7.com: the main page, the Android and iOS pages, all 14 feature pages under them, and the iOS release notes, plus a comparison with the OpManager Nexus cloud copy of the same docs. For each area you'll find how the two platforms compare, the problems found, how the word "Site24x7" is used, and copy fixes ready to apply.</p>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b>18</b><span>pages reviewed</span></div>
+      <div class="stat" role="listitem"><b>82</b><span>"Site24x7" mentions</span></div>
+      <div class="stat" role="listitem"><b>23</b><span>copy fixes ready to apply</span></div>
+      <div class="stat" role="listitem"><b>11</b><span>names used for the app</span></div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist" aria-label="Sections" id="tabs"></nav>
+  <main id="view"></main>
+
+  <footer>
+    <span>Source pages fetched 24 and 28 Sep 2026 from site24x7.com/help/native-apps/. Counts cover page content only, not the menu or footer.</span>
+    <span>For the standalone Nexus rebrand report, see <a href="../">the OpManager Nexus comparison</a>.</span>
+  </footer>
+</div>
+
+<script>
+const H = "https://www.site24x7.com/help/native-apps/";
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const q = s => `<span class="q">${esc(s)}</span>`;
+const pill = p => `<span class="pill p-${p.toLowerCase()}">${p}</span>`;
+const yn = v => v === true ? '<span class="yes">Yes</span>' : v === false ? '<span class="no">No</span>' : esc(v);
+const table = (head, rows) => `<div class="tablebox"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+
+/* ---------- data ---------- */
+const PRIORITIES = [
+  ["crit","A raw template key is showing","Both Admin pages label a Monitor Groups option \"global.template\", which looks like an untranslated string key. It should read \"Template\"."],
+  ["crit","Service Status is described two ways","The Settings pages say it shows \"the status of your monitors\". The main Android and iOS pages say it's the service status of the account's domain, meaning Site24x7's own status. One of them is wrong."],
+  ["crit","iOS 27 features are hard to find","All 4 iOS 27 features are documented only on a \"Latest iOS features\" page. Neither the iOS help page nor the left menu links to it; you can only reach it from the release notes."],
+  ["warn","The app goes by 11 different names","\"Site24x7 app\", \"mobile app\", \"iOS app\", \"Android mobile app\" and more. \"Site24x7\" also stands for the platform, the account and the app icon."],
+  ["warn","Conf XML is in two different places","It's on the Android accounts page and on the iOS Settings page. On both it reads like developer material, not an app feature."],
+  ["warn","The iOS app lock docs are incomplete","The iOS page lists only \"Touch ID/Passcode\". It leaves out Face ID and the PIN rules that Android documents."]
+];
+
+const PAGES = [
+  ["Mobile Apps (main)","Shared","", H, 17],
+  ["Android overview","Android","", H+"android/", 6],
+  ["iOS overview","iOS","", H+"ios/", 9],
+  ["Alarms","Android","iOS", ["android/alarms.html","ios/alarms.html"], [1,2]],
+  ["Monitors","Android","iOS", ["android/monitors.html","ios/monitors.html"], [2,2]],
+  ["Reports","Android","iOS", ["android/reports.html","ios/reports.html"], [1,1]],
+  ["Admin","Android","iOS", ["android/admin.html","ios/admin.html"], [10,10]],
+  ["More settings","Android","iOS", ["android/android-settings.html","ios/ios-settings.html"], [3,3]],
+  ["Alarm widget & other accounts","Android","iOS", ["android/msp-bu-accounts.html","ios/msp-bu-accounts.html"], [3,1]],
+  ["Zia","Android","iOS", ["android/zia-bot.html","ios/zia-bot.html"], [4,4]],
+  ["iOS release notes","iOS","", H+"ios/release-notes.html", 3]
+];
+
+const PLATFORM_MATRIX = [
+  ["Multi-account and multi-data-center sign-in",true,true],["IT Health and Anomaly widgets",true,true],["Test notifications",true,true],
+  ["Themes (dark, light, system)",true,true],["Time zone setting",true,true],["Better monitor details",true,true],
+  ["Alarm shortcuts by long press",true,true],["Service status",true,true],["Try Demo (view-only)",true,true],["Zia",true,true],
+  ["1x1 widget",true,false],["Share reports as PDF",false,true],["Comments language preference",false,true],["NOC View",false,true],["Siri Shortcuts",false,true]
+];
+
+const FEATURES = [
+ {id:"alarms", name:"Alarms", match:"Close", paths:["android/alarms.html","ios/alarms.html"],
+  lead:"Both pages group alerts by monitor name and severity and share the same structure. iOS adds two Apple Intelligence summaries and a long-press action menu.",
+  common:"an Alarms/Anomalies filter; alarm status (Critical, Trouble, Down, Config Error) with counts; RCA for Trouble and Down alarms; comments; assigning technicians; an icon bar; home-screen shortcuts; anomaly filters.",
+  diff:[["Downtime reasons","Not covered","Reasons section, plus an Apple Intelligence explanation (iOS 26)"],["Comment summary","Not covered","Apple Intelligence summary of the whole thread"],["Editing comments","\"Click Copy/Edit/Delete a comment\"","Long press to Copy, Edit or Delete"],["Long-press menu","Create Shortcut only","Technician, Assign, Maintenance, Delete, Create Shortcut"],["Shortcut steps","Long press the alarm","Long press the Site24x7 app icon"]],
+  issues:[[0,"Both pages drop the icon name from one step: \"Click the  to assign a technician\" (Android) and \"Click on the to assign\" (iOS)."],[0,"The titles are capitalized differently: \"Android app: Alarms\" vs \"iOS App: Alarms\"."],[0,"Both say \"Click\" throughout, though touch screens use \"Tap\". iOS mixes the two."],[0,"The last intro bullet, \"Maximize monitoring effectiveness\", repeats the other bullets without adding a feature."]]},
+ {id:"monitors", name:"Monitors", match:"Close", paths:["android/monitors.html","ios/monitors.html"],
+  lead:"The two pages are nearly identical. iOS adds NOC View and drops Create Shortcut from the monitor menu.",
+  common:"a Monitors / Monitor Types / Monitor Groups filter; a status count panel; the Summary, Outages History, Inventory, Log Report and Config Error tabs; server-only tabs; Poll Now, Schedule Maintenance, Suspend, Delete; Quick Add Monitor.",
+  diff:[["Opening the monitor menu","Three-dots menu","Long press the monitor"],["Create Shortcut (1x1 widget)","Yes","Not listed"],["NOC View","Not covered","Up to 1,000 monitors per group as colored tiles"],["Log Report","Custom time frame","Custom time frame, plus a time filter"],["Graph icon entry","\"Performance Report\"","Labelled \"PDF Generation\", but the text describes the Performance Report"]],
+  issues:[[1,"iOS: \"navigate tot he Monitor page\" is a typo."],[1,"iOS: the \"PDF Generation\" label doesn't match its text."],[0,"iOS: \"Monitors Types\" should be \"Monitor Types\"."],[0,"Both: the Monitor Types steps are garbled: \"Click the Monitors() and  Monitor Types option is the default option…\""],[0,"Both: \"OUTAGES HISTORY: Specify the duration…\" suggests the user enters something. The tab shows downtime periods."],[0,"Both: Processes says \"on your Windows server\". Check whether Linux servers are covered too."],[0,"Both: the tab names are in all capitals (SUMMARY, INVENTORY), unlike every other label."],[0,"iOS: \"We can display up to 1K monitors\" switches to \"we\"."],[0,"Both: the intro ends with filler (\"…will empower you to maintain optimal operational efficiency\")."]]},
+ {id:"reports", name:"Reports", match:"Close", paths:["android/reports.html","ios/reports.html"],
+  lead:"The shortest pair, about 200 words each. Both cover Outages and SLA reports, and iOS adds PDF sharing.",
+  common:"open Reports from the bottom bar; Outages (duration, start, end, error message); SLAs (Availability, Response Time, Composite); a time and date filter.",
+  diff:[["PDF sharing of outages","Not covered","Share icon, then pick an app"],["SLA wording","\"Help organizations define…\"","\"Our SLA management helps…\""]],
+  issues:[[0,"Android: \"SLAs: Help organizations define…\" makes the report the subject of \"Help\", which doesn't read correctly."],[0,"Both: the page is thin. It has no steps for opening a single outage or SLA, and only 2 images (Android) and 3 (iOS)."],[0,"The main Android page lists RCA under reports, but this page never mentions RCA."]]},
+ {id:"admin", name:"Admin", match:"Near identical", paths:["android/admin.html","ios/admin.html"],
+  lead:"This is the longest pair, about 1,700 words each. The content is the same on both platforms; only capitalization and small wording differ.",
+  common:"Inventory, User Management, Configuration Profile, Server Monitor, Poller, Operations, Report Settings, Share, Developer (Device Key) and IT Automation.",
+  diff:[["Page title","\"Android app: Administrative actions\"","\"iOS app: Admin\""],["Operations Dashboard","One line","Adds \"Embed options are simple and valuable for a NOC.\""]],
+  issues:[[1,"Both: a raw \"global.template\" key shows as an option label under Monitor Groups."],[0,"Android: the section list says \"Poller\" but the heading says \"Pollers\"."],[0,"Both: \"a Uptime Button\" and \"a SLA setting\" should be \"an\"."],[0,"iOS: \"Clicking theTag icon\" is missing a space."],[0,"Both: menu paths mix capitals, e.g. \"Admin > INVENTORY\" but \"Admin > Report Settings\"."],[0,"Both: grammar problems such as \"Help the monitor to operate using…\" and \"Get the list of users… and displays their role\"."],[0,"Both: \"Our system stores data for up to 30 days\" slips into \"we\" voice."],[0,"iOS: the Mobile Network Poller turns \"an Android device\" into a monitoring location. The iOS page needs a note that it's Android-only."],[0,"Both: check \"130 global monitoring locations\" against the current count."]]},
+ {id:"settings", name:"More settings", match:"Least alike", paths:["android/android-settings.html","ios/ios-settings.html"],
+  lead:"The platforms differ most on this page: iOS has four sections or options that Android lacks, and the app lock works differently.",
+  common:"profile header; Add Account; time zone; notifications and tones; Custom Dashboard; Scheduled Maintenance; Newsletter; Service Status; bottom-bar customization; Trigger Test Alert; Debug Notification; Shake to Share Feedback; Theme; Close Account; Sign out.",
+  diff:[["Bottom-bar customization","\"Edit Navigation\"","\"Tab Customization\""],["App lock","PIN, sign-out after 6 failed tries, biometric unlock, PIN timeout of 1, 5 or 10 min","\"Touch ID/Passcode\" only"],["Notification summary","Not covered","Apple Intelligence summary of the top 25 notifications"],["Ongoing maintenance bar","Not covered","Floating bar with the time left"],["Siri Shortcuts","Not covered","Super Admin, Admin, Operator"],["Conf XML","Not covered","Section on widget ordering"]],
+  issues:[[1,"Both: Service Status is described as \"the status of your monitors\". The main pages say it's the service status of the account's domain."],[0,"Android: \"the statues Up, Down…\" should be \"statuses\"."],[0,"iOS: the title \"iOS app: iOS settings\" says \"iOS\" twice."],[0,"iOS: \"Touch ID/Passcode\" leaves out Face ID and the PIN rules."],[0,"The same feature is called \"Edit Navigation\" and \"Tab Customization\". Check which one the apps actually use."],[0,"iOS: Conf XML reads like developer material, not an app setting."],[0,"iOS: step 2 of Add Account drops the final \"Click Sign-in\"."],[0,"Both: the heading \"More () Settings\" has an icon that didn't render."],[0,"Both: the intro describes the doc (\"we provide clear instructions\") instead of the screen."]]},
+ {id:"accounts", name:"Alarm widget & other accounts", match:"Partial", paths:["android/msp-bu-accounts.html","ios/msp-bu-accounts.html"],
+  lead:"Both pages cover MSP and BU accounts. Only Android covers the alarm widget, and Android also carries the Conf XML note that iOS puts under Settings.",
+  common:"the MSP Dashboard (customer status by group, search, alarms, notifications, settings); the Business Unit Portal (list, search, settings); a link under More to return to either.",
+  diff:[["Link text on the platform page","\"Alarm widget & other accounts\"","\"Other accounts\""],["Page title","\"Alarms widget, MSP, and BU accounts\"","\"MSP and BU accounts\""],["Alarm widget","Yes","Not covered"],["Conf XML note","Here, as \"Developer's note\"","Under More settings instead"]],
+  issues:[[0,"The link text and page title don't match. \"Alarm widget\", \"Alarms widget\" and \"Alarm's widget\" are all used."],[1,"Conf XML sits on this page on Android and on the Settings page on iOS."],[0,"iOS: there's no widget section, even though the main iOS page promotes widgets."],[0,"Both: \"Logging in with your MSP account, will take you…\" has an extra comma."],[0,"Both: \"the MSP Dashboard link available in the More\" is missing a word."],[0,"Both: it's unclear what \"Display the list of notifications available to customers\" means."],[0,"Android: the intro is 5 sentences of overview with no instructions."]]},
+ {id:"zia", name:"Zia", match:"Near identical", paths:["android/zia-bot.html","ios/zia-bot.html"],
+  lead:"The two Zia pages match most closely of all the pairs. They differ only in one iOS design line and the sample questions.",
+  common:"prerequisites (latest app, a valid account, an LLM integration); six capabilities; copy, listen and rating feedback; three sample scenarios.",
+  diff:[["Design note","None","\"Built with the latest Liquid Glass UI design\""],["Outage scenario returns","Monitors, reason, time down","Monitors, severity, time down"],["RCA sample question","\"Can you provide me the alerts and the RCA report?\"","\"Why is my server down?\""],["Voice sample question","\"What are the current statuses of the available monitors?\"","\"How is my website performing today?\""]],
+  issues:[[0,"Both: \"a valid integration with the LLM\" doesn't say which LLM, or who sets it up."],[0,"The outage answer lists \"reason\" on Android and \"severity\" on iOS."],[0,"Both: \"help us improve future responses\" slips into \"we\" voice."],[0,"iOS: the \"Liquid Glass UI design\" line is marketing copy with no instructions attached."],[0,"Both: the title \"Using Zia in the Site24x7 … mobile app\" uses a different pattern from every other feature page."]]}
+];
+
+const RELEASES = [
+  ["iOS 27","14 Sep 2026","New","Extra-large widgets","Operations View and Monitor Groups widgets on the Home Screen","Latest iOS features page only"],
+  ["iOS 27","14 Sep 2026","New","On-screen awareness","Siri AI summarizes Monitor, Alarm and Anomaly Details","Latest iOS features page only"],
+  ["iOS 27","14 Sep 2026","New","Siri AI actions in Spotlight","Assign technicians, add comments, open monitors by status","Latest iOS features page only"],
+  ["iOS 27","14 Sep 2026","Enhancement","Liquid Glass optimization","Transparency and opacity follow system settings","Latest iOS features page only"],
+  ["iOS 26","6 Sep 2025","New","Liquid Glass","New design: rounded corners, fluid overlays, search","Zia page (one line)"],
+  ["iOS 26","6 Sep 2025","New","Ongoing maintenance updates","Floating bar showing ongoing maintenance","More settings"],
+  ["iOS 26","6 Sep 2025","New","Reason analysis","Explains why an alarm fired, with suggested fixes","Alarms"],
+  ["iOS 26","6 Sep 2025","New","Comment summaries","One-tap summary of long comment threads","Alarms"],
+  ["iOS 26","6 Sep 2025","New","Notification summaries","Summary of the top 25 notifications","More settings"]
+];
+
+const NAMES = [
+  ["Site24x7 app","Main page, overviews"],["Site24x7 mobile app","Overviews, Admin, Settings"],["Site24x7 mobile apps","Main page heading"],
+  ["Site24x7 apps","Main page, related articles"],["Site24x7 iPad app","Main page"],["Site24x7 tablet app","Main page"],
+  ["Site24x7 Android app","Every Android feature page"],["Site24x7 iOS app","Every iOS feature page, release notes"],
+  ["Site24x7 Android mobile app","Zia (Android)"],["Site24x7 iOS mobile app","Zia (iOS)"],["Site24x7 mobile app for iOS","Release notes"]
+];
+
+const FIXES = [
+  ["iOS overview","iOS","IT Health and Anomalie widgets","IT Health and Anomaly widgets"],
+  ["iOS overview","iOS","different data-centre accounts","different data center accounts"],
+  ["iOS overview","iOS","address issues and optimize operations from anywhere promptly","address issues promptly and optimize operations from anywhere"],
+  ["Admin","Both","global.template","Template"],
+  ["Monitors","iOS","navigate tot he Monitor page","navigate to the Monitor page"],
+  ["Monitors","iOS","Monitors Types","Monitor Types"],
+  ["Monitors","iOS","PDF Generation: Click the graph icon…","Performance Report: Click the graph icon…"],
+  ["More settings","Android","tones for the statues Up, Down…","tones for the statuses Up, Down…"],
+  ["More settings","iOS","iOS app: iOS settings","iOS app: Settings"],
+  ["Admin","iOS","Clicking theTag icon","Clicking the Tag icon"],
+  ["Admin","Both","a Uptime Button","an Uptime Button"],
+  ["Admin","Both","a SLA setting","an SLA setting"],
+  ["Admin","Android","Section list \"Poller\", heading \"Pollers\"","Use \"Poller\" for both"],
+  ["Alarms","iOS","iOS App: Alarms","iOS app: Alarms"],
+  ["Alarms","Both","Click the  to assign / Click on the to assign","Tap the Assign Technician icon to assign"],
+  ["Other accounts","Both","Logging in with your MSP account, will take you","Logging in with your MSP account will take you"],
+  ["Other accounts","Android","Alarm's widget","Alarm widget"],
+  ["iOS release notes","iOS","iOS 27 | [ 14 September 2026]","iOS 27 — 14 September 2026"],
+  ["iOS release notes","iOS","Operations View and Monitor Groups , providing","Operations View and Monitor Groups, providing"],
+  ["iOS release notes","iOS","from the Home Screen .","from the Home Screen."],
+  ["iOS release notes","iOS","Monitor Details, Alarm Details , and Anomaly Details","Monitor Details, Alarm Details, and Anomaly Details"],
+  ["iOS release notes","iOS","in Down , Critical , or Trouble status","in Down, Critical, or Trouble status"],
+  ["iOS release notes","iOS","help documentation .","help documentation."]
+];
+
+/* ---------- views ---------- */
+const issuesList = arr => `<ul class="issues">${arr.map(([c,t])=>`<li class="${c?"crit":""}">${esc(t)}</li>`).join("")}</ul>`;
+
+const VIEWS = {
+ overview:{label:"Overview", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>Fix these first</h2><p class="intro">The review found 23 copy fixes ready to apply and more than 50 content issues. These six have the most impact on readers.</p>
+      <ol class="prio">${PRIORITIES.map(([s,t,d])=>`<li><span class="sev ${s}">${s==="crit"?"High":"Medium"}</span><div><h3>${esc(t)}</h3><p>${esc(d)}</p></div></li>`).join("")}</ol></div>
+    <div class="block"><h2>Pages reviewed</h2>
+      ${table(["Page","Platform","Links"],PAGES.map(p=>{
+        const links = Array.isArray(p[3]) ? `<a href="${H+p[3][0]}" target="_blank" rel="noopener">Android</a> · <a href="${H+p[3][1]}" target="_blank" rel="noopener">iOS</a>` : `<a href="${p[3]}" target="_blank" rel="noopener">Open</a>`;
+        const plat = p[2] ? pill("Android")+" "+pill("iOS") : (p[1]==="Shared"?pill("Both"):pill(p[1]));
+        return [esc(p[0]),plat,links];}))}
+    </div>
+  </section>`},
+ platform:{label:"Platform pages", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>Main page, Android and iOS</h2><p class="intro">The <a href="${H}" target="_blank" rel="noopener">main page</a> covers platforms (iOS, Android, iPad, tablets, TV), the 11 roles that can use the app, and install steps. Sign Up is described only in the Android steps. The <a href="${H}android/" target="_blank" rel="noopener">Android</a> and <a href="${H}ios/" target="_blank" rel="noopener">iOS</a> pages share their overview, benefits, use case and demo sections almost word for word.</p></div>
+    <div class="block"><h3>Feature highlights: 10 on both, 4 only on iOS, 1 only on Android</h3>
+      ${table(["Feature","Android","iOS"],PLATFORM_MATRIX.map(r=>[esc(r[0]),yn(r[1]),yn(r[2])]))}</div>
+    <div class="two">
+      <div class="block"><h3>Only on iOS</h3><ul class="plain"><li>Reports can be shared as PDFs</li><li>Comments language preference</li><li>NOC View for monitor groups</li><li>Siri Shortcuts (Super Admin, Admin, Operator)</li><li>A section linking to the iOS release notes</li></ul></div>
+      <div class="block"><h3>Issues</h3>${issuesList([[0,"iOS: \"Anomalie widgets\" should be \"Anomaly\"."],[0,"iOS: \"data-centre\" should be \"data center\", as on Android."],[0,"iOS: \"from anywhere promptly\" is in the wrong order."],[0,"The feature page is called \"Alarm widget & other accounts\" on Android and \"Other accounts\" on iOS."]])}</div>
+    </div>
+  </section>`},
+ features:{label:"Feature pages", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>7 features, Android vs iOS</h2><p class="intro">Each platform page links to the same seven feature pages. Pick a feature to see what both versions share, how they differ, and the problems found.</p>
+      <div class="chips" role="group" aria-label="Feature">${FEATURES.map(f=>`<button class="chip" data-f="${f.id}" aria-pressed="false">${esc(f.name)}</button>`).join("")}</div></div>
+    <div id="feat"></div>
+    <div class="block"><h3>All features at a glance</h3>
+      ${table(["Feature","Match","Issues noted"],FEATURES.map(f=>[esc(f.name),esc(f.match),`<span class="q">${f.issues.length}</span>`]))}</div>
+  </section>`, after:()=>{
+    const pick = id => {
+      const f = FEATURES.find(x=>x.id===id) || FEATURES[0];
+      document.querySelectorAll("[data-f]").forEach(b=>b.setAttribute("aria-pressed", b.dataset.f===f.id));
+      document.getElementById("feat").innerHTML = `
+        <div class="card block">
+          <div class="feat-head"><h2>${esc(f.name)}</h2><div class="srcs"><a href="${H+f.paths[0]}" target="_blank" rel="noopener">Android page</a><a href="${H+f.paths[1]}" target="_blank" rel="noopener">iOS page</a></div></div>
+          <p>${esc(f.lead)}</p>
+          <p class="common"><b>Common to both:</b> ${esc(f.common)}</p>
+          ${table(["Topic",pill("Android"),pill("iOS")],f.diff.map(r=>r.map(esc)))}
+          <h3>Issues (${f.issues.length})</h3>${issuesList(f.issues)}
+        </div>`;
+      try{localStorage.setItem("audit-feature",f.id)}catch(e){}
+    };
+    document.querySelectorAll("[data-f]").forEach(b=>b.addEventListener("click",()=>pick(b.dataset.f)));
+    let saved=null; try{saved=localStorage.getItem("audit-feature")}catch(e){}
+    pick(saved||"alarms");
+  }},
+ release:{label:"iOS release notes", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>iOS release notes</h2><p class="intro">The <a href="${H}ios/release-notes.html" target="_blank" rel="noopener">release notes page</a> lists 9 items across two releases. All 5 iOS 26 items appear in the iOS help pages. None of the 4 iOS 27 items do; they're documented only on <a href="${H}ios/features.html" target="_blank" rel="noopener">Latest iOS features in Site24x7</a>, which the help page and left menu don't link to.</p></div>
+    ${table(["Release","Date","Type","Item","What it adds","Documented in"],RELEASES.map(r=>[`<span class="q">${r[0]}</span>`,`<span style="white-space:nowrap">${r[1]}</span>`,esc(r[2]),esc(r[3]),esc(r[4]),esc(r[5])]))}
+    <div class="block"><h3>Issues</h3>${issuesList([[1,"The Latest iOS features page is hard to find. You can only reach it from the last line of the release notes."],[1,"The main iOS page is behind: its feature highlights don't mention the iOS 27 widgets, on-screen awareness or Spotlight actions."],[0,"The same features have different names: \"Siri AI\" here, \"Apple Intelligence\" and \"Siri Shortcuts\" in the help pages. \"Operations View\" doesn't match the Admin pages' \"Operations Dashboard\"."],[0,"The descriptions don't quite match. The release notes say reason analysis uses \"correlated metrics and logs\"; the Alarms page doesn't mention either."],[0,"The iOS 26 date (6 Sep 2025) is before Apple's public iOS 26 release. Check it against the App Store history."],[0,"No release lists an app version number or build."],[0,"The headings and running text have six stray spaces before commas and periods."]])}</div>
+  </section>`},
+ mentions:{label:"“Site24x7” mentions", render:()=>{
+    const max = 17, w = n => `${Math.max(n/max*100,1.5)}%`;
+    const rows = PAGES.map(p=>{
+      let bars;
+      if(Array.isArray(p[4])) bars = `<div class="bar a"><i style="width:${w(p[4][0])}"></i>${p[4][0]}</div><div class="bar i"><i style="width:${w(p[4][1])}"></i>${p[4][1]}</div>`;
+      else { const cls = p[1]==="Android"?"a":p[1]==="iOS"?"i":"s"; bars = `<div class="bar ${cls}"><i style="width:${w(p[4])}"></i>${p[4]}</div>`; }
+      return `<div class="bar-row"><div class="bar-label">${esc(p[0])}</div><div class="bar-set">${bars}</div></div>`;}).join("");
+    return `
+  <section class="panel">
+    <div class="block"><h2>The word "Site24x7"</h2><p class="intro">"Site24x7" appears 82 times across the 18 pages: 32 on the main and platform pages, 47 on the feature pages, and 3 in the release notes. The Admin pages have 20 of them. The word is used for three things: the app, the platform or account, and the app icon.</p></div>
+    <div class="card block">
+      <div class="legend"><span style="--c:var(--android)">Android</span><span style="--c:var(--ios)">iOS</span><span style="--c:var(--both)">Shared page</span></div>
+      <div class="bars" role="img" aria-label="Site24x7 mentions per page">${rows}</div>
+    </div>
+    <div class="block"><h3>11 names for the app</h3><div class="names">${NAMES.map(n=>`<div class="name"><code>${esc(n[0])}</code><span>${esc(n[1])}</span></div>`).join("")}</div></div>
+    <div class="block"><h3>What to note</h3><ul class="plain">
+      <li><b>Pick one name and use it everywhere.</b> The Admin and Settings pages switch between "Site24x7 Android app" and "Site24x7 mobile app" on the same page.</li>
+      <li><b>Keep the app and the platform separate.</b> "Site24x7 roles", "your Site24x7 account" and "log in to Site24x7" mean the platform. "Features supported in Site24x7" means the app but reads as the platform.</li>
+      <li><b>Say "app icon" when you mean the icon.</b> "Long press the Site24x7 app" means the home-screen icon.</li>
+      <li><b>Almost every feature page opens the same way.</b> 11 of 14 start with "&lt;Feature&gt; in the Site24x7 Android/iOS app…".</li>
+      <li><b>One sentence uses the name twice:</b> "…your Site24x7 credentials or Sign Up to start a new account with Site24x7".</li>
+    </ul></div>
+  </section>`}},
+ nexus:{label:"OpManager Nexus comparison", render:()=>{
+    const NX = "https://www.localmanageengine.com/it-operations-management/cloud-help/native-apps/";
+    const MAP = [["Mobile Apps (main)","17 → 0","None"],["Android overview","6 → 1","One \"Site24x7's\" left in the use case"],["iOS overview","9 → 1","Release-notes link replaced by an inline iOS 26 section; one \"Site24x7's\" left"],["Alarms","1, 2 → 0","None"],["Monitors","2, 2 → 0","None"],["Reports","1, 1 → 0","None"],["Admin","10, 10 → 1, 1","\"site24x7.com\" left in Device Key"],["More settings","3, 3 → 0","None"],["Other accounts","3, 1 → 0","None"],["Zia","4, 4 → 0","None"],["iOS release notes","3 → 0","Heading levels changed"],["Latest iOS features","17 → 0","3 steps reworded; new spacing errors"]];
+    const LEFT = [["Android + iOS overview","Use case","\"With Site24x7's instant alerts…\"","\"With OpManager Nexus's instant alerts…\""],["Admin (Android + iOS)","Device Key","\"push performance metrics to site24x7.com\"","The Nexus endpoint, or drop the domain"],["Mobile Apps (main)","App Store buttons ×3","apps.apple.com/…/site24x7/id538759565","Confirm the app Nexus users install"],["Mobile Apps (main)","Play Store button","com.adventnet.webmon.android (Site24x7 app)","Same check"],["Main, Other accounts ×2","Related article","www.site24x7.com/mobile-apps.html","Nexus product page, or remove"],["Zia (Android + iOS)","LLM integration FAQ","support.site24x7.com/…integrate-site24x7-with-openai-chatgpt","A Nexus KB article"]];
+    const SHOTS = [["try-demo-android.png","Android overview","Large Site24x7 logo and tagline on the welcome screen"],["try-demo-ios.png","iOS overview","\"ManageEngine Site24x7\" logo and tagline"],["ios27-operations-view-widget.png","Latest iOS features","\"ManageEngine Site24x7\" widget header; app label \"Site24x7\""],["ios27-monitor-group-widget.png","Latest iOS features","Same as above"],["ios27-assign-technician.png","Latest iOS features","\"Site24x7\" in the Spotlight result"],["ios-mobile-notification-settings.png","iOS settings","Every tone named \"Site24x7 (Default)\""],["android_mobile_notifications_os.png","Android settings","System notifications labelled \"Site24x7\""],["android_mobile_alarms_details.png","Android alarms","Commenter \"Site24x7 - Monitoring Service\""],["android-mobile-it-automation-notification.png","Android admin","\"…push notification in the Site24x7 Mobile Application\""],["android-mobile-confirmation-it-automation.png","Android admin","Same dialog"],["mobile-app-banner-tv-app.png","Mobile Apps (main)","Small \"Site24x7\" monitor names in the TV NOC View"]];
+    const CONFIRM = [["MSP Dashboard and MSP roles","Does Nexus cloud offer MSP accounts?"],["Business Unit Portal and BU roles","Does Nexus cloud have Business Units?"],["Cost Admin and Cost User roles","Do these roles exist in Nexus?"],["\"130 global monitoring locations\"","Is 130 the Nexus figure?"],["Mobile Network Poller","Is it available in Nexus?"],["Real User Monitors; Log Report \"except APM and RUM\"","Does Nexus support RUM and APM?"],["Sign Up, then add a website URL","Can users sign up for Nexus in the app?"],["Try Demo mode","Does the demo show Nexus data?"],["Monthly Newsletter","Nexus's newsletter or Site24x7's?"],["Service Status","Nexus status or Site24x7 status?"],["Uptime Button, Public Reports, Operations Dashboard","Are these Nexus features?"],["Azure users","Does Nexus support Azure user sign-in?"]];
+    const NEW = [[1,"iOS overview: no page links to the iOS release notes any more, so the release notes and Latest iOS features pages can't be reached from the iOS help page."],[1,"iOS overview: the inline section covers iOS 26 only, although the release notes list iOS 27."],[0,"Release notes page title reads \"Online OpManager Nexus\", a leftover of \"Online Help Site24x7\"."],[0,"Release notes: \"What's new\" is plain text under iOS 26 but a heading under iOS 27."],[0,"Latest iOS features: new stray spaces in \"Monitor Groups .\", \"Home Screen .\" (twice), \"Monitors , Alarms , Dashboard ,\", \"Alarm Details ,\"."],[0,"Latest iOS features: missing space in \"on the go.Learn how\"."],[0,"Latest iOS features: the assign-technician step drops \"select Done\". Check it against the app."]];
+    return `
+  <section class="panel">
+    <div class="block"><h2>Site24x7 vs OpManager Nexus cloud</h2><p class="intro">The <a href="${NX}" target="_blank" rel="noopener">OpManager Nexus cloud mobile apps docs</a> are a copy of the Site24x7 docs with the name replaced. 16 of 19 pages are word-for-word the same apart from the rename. 13 references to Site24x7 remain in the text and links, 11 screenshots still show Site24x7 branding, and none of the 23 copy fixes have been applied.</p></div>
+    <div class="stats" role="list">
+      <div class="stat" role="listitem"><b>95/99</b><span>"Site24x7" mentions renamed</span></div>
+      <div class="stat" role="listitem"><b>13 + 11</b><span>Site24x7 references + branded screenshots</span></div>
+      <div class="stat" role="listitem"><b>23/23</b><span>copy fixes still open</span></div>
+      <div class="stat" role="listitem"><b>7</b><span>new issues on Nexus</span></div>
+    </div>
+    <div class="block"><h3>Page-by-page</h3>${table(["Page","\"Site24x7\" before → after","Change beyond the rename"],MAP.map(r=>[esc(r[0]),`<span class="q">${esc(r[1])}</span>`,esc(r[2])]))}</div>
+    <div class="block"><h3>Rename leftovers to fix</h3>${table(["Page","Where","Now","Change to"],LEFT.map(r=>[esc(r[0]),esc(r[1]),q(r[2]),`<span class="q fix-new">${esc(r[3])}</span>`]))}
+    </div>
+    <div class="block"><h3>Screenshots: 11 of 82 show Site24x7 branding</h3>
+      <p class="intro">All 113 images (82 screenshots, 31 icons) are byte-for-byte copies of the Site24x7 files. Every screenshot was checked with text recognition and by eye. The other 71 screenshots and all icons show only neutral UI and "Zylker" sample data.</p>
+      ${table(["Screenshot","Nexus page","What shows"],SHOTS.map(r=>[`<span class="q">${esc(r[0])}</span>`,esc(r[1]),esc(r[2])]))}
+      <p class="intro">Also: the Android sign-up screen says "Try other 160+ Monitors" and the iOS Zia screen mentions "alert credits", both Site24x7 claims. The iOS App Settings screenshot shows "Face ID/Passcode", which confirms the Settings text ("Touch ID/Passcode") is out of date.</p></div>
+    <div class="block"><h3>Content changes beyond the rename</h3><ul class="plain">
+      <li><b>iOS overview:</b> the release-notes link became an inline "Features of iOS 26 with Liquid Glass UI" section.</li>
+      <li><b>iOS release notes:</b> same text, but the headings were promoted one level.</li>
+      <li><b>Latest iOS features:</b> "Type your comment" became "Enter and Save your comment", "select Done" was dropped, and "Monitor(s)" became "Monitors".</li></ul></div>
+    <div class="block"><h3>Site24x7 content to confirm for Nexus</h3>${table(["Claim carried over","Question for the product team"],CONFIRM.map(r=>r.map(esc)))}</div>
+    <div class="block"><h3>New issues on the Nexus side</h3>${issuesList(NEW)}
+      <p class="intro">All 23 copy fixes and the earlier content issues also apply to Nexus unchanged, as does a broken "android-settings" link on the Monitors page, which returns 404 on both sites.</p></div>
+  </section>`}},
+ fixes:{label:"Copy fixes", render:()=>`
+  <section class="panel">
+    <div class="block"><h2>23 copy fixes</h2><p class="intro">These can go in as they are, and every one also appears on the OpManager Nexus cloud pages. Filter by platform or page, or search. Each row has a button that copies the replacement text.</p>
+      <div class="filters">
+        <input id="fx-q" type="search" placeholder="Search current or suggested text" aria-label="Search fixes">
+        <select id="fx-plat" aria-label="Platform"><option value="">All platforms</option><option>Android</option><option>iOS</option><option>Both</option></select>
+        <select id="fx-page" aria-label="Page"><option value="">All pages</option>${[...new Set(FIXES.map(f=>f[0]))].map(p=>`<option>${esc(p)}</option>`).join("")}</select>
+        <span class="count" id="fx-count"></span>
+      </div></div>
+    <div id="fx-table"></div>
+  </section>`, after:()=>{
+    const qi=document.getElementById("fx-q"), pl=document.getElementById("fx-plat"), pg=document.getElementById("fx-page");
+    const draw=()=>{
+      const s=qi.value.trim().toLowerCase();
+      const rows=FIXES.map((f,i)=>[f,i]).filter(([f])=>(!pl.value||f[1]===pl.value)&&(!pg.value||f[0]===pg.value)&&(!s||(f[2]+" "+f[3]).toLowerCase().includes(s)));
+      document.getElementById("fx-count").textContent=`${rows.length} of ${FIXES.length}`;
+      document.getElementById("fx-table").innerHTML = rows.length ? table(["Page","Platform","Current text","Suggested fix",""],rows.map(([f,i])=>[esc(f[0]),pill(f[1]),q(f[2]),`<span class="q fix-new">${esc(f[3])}</span>`,`<button class="copy" data-i="${i}">Copy fix</button>`])) : `<p class="intro">No fixes match. Clear the search or filters.</p>`;
+    };
+    [qi,pl,pg].forEach(el=>el.addEventListener("input",draw));
+    document.getElementById("fx-table").addEventListener("click",e=>{
+      const b=e.target.closest(".copy"); if(!b) return;
+      const text=FIXES[+b.dataset.i][3];
+      const done=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy fix",1400)};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(text).then(done).catch(()=>{b.textContent="Select text"})}else{b.textContent="Select text"}
+    });
+    draw();
+  }}
+};
+
+/* ---------- tabs ---------- */
+const tabs=document.getElementById("tabs"), view=document.getElementById("view");
+const keys=Object.keys(VIEWS);
+tabs.innerHTML=keys.map(k=>`<button role="tab" id="t-${k}" data-k="${k}" aria-selected="false">${VIEWS[k].label}</button>`).join("");
+function show(k,push){
+  if(!VIEWS[k]) k="overview";
+  tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
+  view.innerHTML=VIEWS[k].render();
+  VIEWS[k].after&&VIEWS[k].after();
+  if(push){ try{history.replaceState(null,"","#"+k)}catch(e){location.hash=k} }
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest("button"); if(b){show(b.dataset.k,true); tabs.scrollIntoView({block:"nearest"});}});
+tabs.addEventListener("keydown",e=>{
+  if(!["ArrowRight","ArrowLeft"].includes(e.key)) return;
+  const i=keys.indexOf(document.activeElement.dataset.k); if(i<0) return;
+  const n=keys[(i+(e.key==="ArrowRight"?1:keys.length-1))%keys.length];
+  show(n,true); document.getElementById("t-"+n).focus();
+});
+window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
+show(location.hash.slice(1)||"overview");
+</script>
+</body>
+</html>

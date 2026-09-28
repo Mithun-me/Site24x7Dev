@@ -13,3 +13,7 @@ Snapshot taken 28 Sep 2026. Nexus pages come from the staging host `www.localman
 ## View
 
 Open `index.html` in a browser, or use the GitHub Pages URL for this repo. It's a static page with no build step and no dependencies, apart from Google Fonts. Link to a section by adding `#summary`, `#map`, `#leftovers`, `#shots`, `#confirm`, `#issues` or `#fixes` to the URL.
+
+## Full audit
+
+`audit/index.html` is the complete Site24x7 Mobile Docs Audit that this comparison grew out of. It has an overview, the platform and feature pages (Android vs iOS), the iOS release notes, how the word "Site24x7" is used, copy fixes, and the Nexus comparison tab. On GitHub Pages it's served at `/audit/`.
