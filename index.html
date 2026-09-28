@@ -1,274 +1,705 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Nexus Mobile Docs Rebrand Check</title>
 <meta name="description" content="Site24x7 vs OpManager Nexus cloud mobile app help docs: what changed, what still says Site24x7, and what to fix.">
 <meta name="robots" content="noindex, nofollow">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="./assets/ui.css">
-<script src="./assets/shell.js"></script>
+<script>
+  // Serve React from this repo instead of unpkg.com. The files in assets/vendor are
+  // byte-identical to the unpkg builds (their sha384 matches the SRI pinned in support.js).
+  window.__resources = {
+    "https://unpkg.com/react@18.3.1/umd/react.production.min.js": "assets/vendor/react.production.min.js",
+    "https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js": "assets/vendor/react-dom.production.min.js"
+  };
+</script>
+<script src="./support.js"></script>
 </head>
 <body>
-<a class="skip" href="#view">Skip to content</a>
-<header class="appbar"><div class="appbar-in">
-  <a class="brand" href="./"><span class="mark" aria-hidden="true"></span><span>Mobile Docs Review</span></a>
-  <nav class="switch" aria-label="Reports"><a href="./" aria-current="page">Nexus comparison</a><a href="./audit/" >Full audit</a></nav>
-  <button class="theme" id="theme" type="button" aria-label="Switch theme"></button>
-</div></header>
-<div class="wrap">
-  <section class="hero">
-    <div>
-      <div class="eyebrow">Help docs review · Mobile Apps · 28 Sep 2026</div>
-      <h1>Site24x7 → OpManager Nexus cloud</h1>
-      <p class="lede">The OpManager Nexus cloud mobile app help pages are a copy of the Site24x7 pages with the product name swapped. This report lists what changed, what still says Site24x7, and what the product team needs to confirm before the pages go live.</p>
-    </div>
-    <div class="stats" role="list">
-      <div class="stat" role="listitem"><b>19</b><span>page pairs compared</span></div>
-      <div class="stat" role="listitem"><b>95/99</b><span>"Site24x7" mentions renamed</span></div>
-      <div class="stat" role="listitem"><b>13 + 11</b><span>leftover references + branded screenshots</span></div>
-      <div class="stat" role="listitem"><b>30</b><span>copy fixes (23 inherited, 7 new)</span></div>
-    </div>
-  </section>
-  <div class="layout">
-    <nav class="tabs" role="tablist" aria-label="Sections" id="tabs"></nav>
-    <main id="view" tabindex="-1"></main>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;family=Instrument+Serif:ital@0;1&amp;display=swap">
+<style>
+html{scroll-behavior:smooth;scroll-padding-top:24px}
+*{box-sizing:border-box}
+body{margin:0;background:#F1EDE4;color:#14201C;font-family:'Bricolage Grotesque',system-ui,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:#0A7863;text-underline-offset:3px}
+a:hover{color:#0C5F50}
+::selection{background:#14201C;color:#F1EDE4}
+input::placeholder{color:#6D7C76}
+@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}html{scroll-behavior:auto}}
+</style>
+</helmet>
+
+<sc-if value="{{ grain }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="position:fixed;inset:0;pointer-events:none;z-index:60;opacity:.4;mix-blend-mode:multiply;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22180%22 height=%22180%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%22.85%22 numOctaves=%222%22 stitchTiles=%22stitch%22/%3E%3CfeColorMatrix values=%220 0 0 0 0.08 0 0 0 0 0.12 0 0 0 0 0.1 0 0 0 .45 0%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23n)%22/%3E%3C/svg%3E')"></div></sc-if>
+
+<header style="max-width:1320px;margin:0 auto;padding:18px clamp(18px,4vw,40px);display:flex;align-items:center;gap:14px 18px;flex-wrap:wrap">
+  <a href="#summary" style="display:flex;align-items:center;gap:10px;color:#14201C;text-decoration:none;font-weight:700;font-size:15px;white-space:nowrap">
+    <span aria-hidden="true" style="width:26px;height:26px;border-radius:8px;background:#0A7863;position:relative;flex:none">
+      <span style="position:absolute;left:7px;top:6px;width:9px;height:14px;border-radius:2px;background:#FFFFFF;opacity:.95"></span>
+      <span style="position:absolute;left:13px;top:10px;width:7px;height:10px;border-radius:2px;background:#FFFFFF;opacity:.6"></span>
+    </span>
+    <span>Mobile Docs Review</span>
+  </a>
+  <nav aria-label="Reports" style="display:flex;gap:6px;margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;text-transform:uppercase">
+    <a aria-current="page" href="#summary" style="padding:8px 13px;border-radius:999px;background:#14201C;color:#F1EDE4;text-decoration:none;border:1.5px solid #14201C">Nexus comparison</a>
+    <a href="audit/index.html" style="padding:8px 13px;border-radius:999px;border:1.5px solid #14201C;color:#14201C;text-decoration:none" style-hover="background:#14201C;color:#F1EDE4">Full audit ↗</a>
+  </nav>
+</header>
+
+<sc-if value="{{ marquee }}" hint-placeholder-val="{{ true }}"><div aria-hidden="true" style="background:#14201C;color:#F1EDE4;overflow:hidden;padding:11px 0;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;min-height:42px">{{ ticker }}</div></sc-if>
+
+<section data-screen-label="Hero" style="max-width:1320px;margin:0 auto;padding:clamp(40px,6vw,84px) clamp(18px,4vw,40px) 24px">
+  <div style="display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">
+    <span style="width:10px;height:10px;border-radius:50%;background:#B42318;flex:none"></span>
+    <span>Help docs review · Mobile Apps · 28 Sep 2026</span>
   </div>
-  <footer>
-    <span>Nexus pages fetched 28 Sep 2026 from the staging host www.localmanageengine.com/it-operations-management/cloud-help/native-apps/ (canonical: www.manageengine.com). Site24x7 pages fetched 24–28 Sep 2026 from www.site24x7.com/help/native-apps/.</span>
-    <span>Counts cover page content only, not the menu or footer. For the full Site24x7 review, see <a href="audit/">the Site24x7 Mobile Docs Audit</a>.</span>
-  </footer>
-</div>
-<dialog id="zoom"><img id="zoom-img" alt=""><p id="zoom-cap"></p></dialog>
+  <h1 style="margin:26px 0 0;font-weight:800;font-variation-settings:'wdth' 75;line-height:.84;letter-spacing:-.035em">
+    <span style="display:block;position:relative;width:fit-content;font-size:clamp(78px,16vw,240px);color:#14201C">Site24x7<span aria-hidden="true" style="position:absolute;left:-3%;right:-3%;top:50%;height:.075em;background:#B42318;transform:rotate(-5deg);border-radius:.04em"></span><span aria-hidden="true" style="position:absolute;right:0;top:.02em;transform:translateX(105%) rotate(9deg);font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;font-size:clamp(20px,2.6vw,38px);letter-spacing:0;color:#B42318;white-space:nowrap;font-variation-settings:normal">— strike it</span></span>
+    <span style="display:flex;align-items:center;gap:14px;margin:18px 0 12px;font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:0;font-size:clamp(22px,2.6vw,36px);color:#46564F;font-variation-settings:normal">
+      <span style="display:block;width:clamp(40px,8vw,120px);height:2px;background:#14201C"></span>
+      <span>becomes</span>
+    </span>
+    <span style="display:block;font-size:clamp(58px,10.5vw,164px);color:#0A7863">OpManager Nexus <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;letter-spacing:-.01em;color:#14201C;font-variation-settings:normal">cloud</span></span>
+  </h1>
 
-<script>
-const NX = "https://www.localmanageengine.com/it-operations-management/cloud-help/native-apps/";
-const S24 = "https://www.site24x7.com/help/native-apps/";
-const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const q = s => `<span class="q">${esc(s)}</span>`;
-const pill = p => `<span class="pill p-${p.toLowerCase()}">${p}</span>`;
-const table = (head, rows) => `<div class="tablebox"><table><thead><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${rows.map(r=>`<tr>${r.map((c,j)=>`<td data-label="${String(head[j]||"").replace(/<[^>]+>/g,"")}">${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
-const issuesList = arr => `<ul class="issues">${arr.map(([c,t])=>`<li class="${c?"crit":""}">${esc(t)}</li>`).join("")}</ul>`;
-const link = (href, text) => `<a href="${href}" target="_blank" rel="noopener">${esc(text)}</a>`;
+  <div style="margin-top:clamp(40px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:32px;align-items:start">
+    <p style="margin:0;font-size:19px;line-height:1.5;color:#2B3833;max-width:46ch;text-wrap:pretty">The OpManager Nexus cloud mobile app help pages are a copy of the Site24x7 pages with the product name swapped. This report lists what changed, what still says Site24x7, and what the product team needs to confirm before the pages go live.</p>
 
-const MAP = [
-  ["Mobile Apps (main)","",17,0,"None"],
-  ["Android overview","android/",6,1,"One \"Site24x7's\" left in the use case"],
-  ["iOS overview","ios/",9,1,"Release-notes link replaced by an inline iOS 26 section; one \"Site24x7's\" left"],
-  ["Alarms","android/alarms.html|ios/alarms.html","1, 2",0,"None"],
-  ["Monitors","android/monitors.html|ios/monitors.html","2, 2",0,"None"],
-  ["Reports","android/reports.html|ios/reports.html","1, 1",0,"None"],
-  ["Admin","android/admin.html|ios/admin.html","10, 10","1, 1","\"site24x7.com\" left in Device Key"],
-  ["More settings","android/android-settings.html|ios/ios-settings.html","3, 3",0,"None"],
-  ["Other accounts","android/msp-bu-accounts.html|ios/msp-bu-accounts.html","3, 1",0,"None"],
-  ["Zia","android/zia-bot.html|ios/zia-bot.html","4, 4",0,"None"],
-  ["iOS release notes","ios/release-notes.html",3,0,"Heading levels changed"],
-  ["Latest iOS features","ios/features.html",17,0,"3 steps reworded; new spacing errors"]
-];
-const LEFT = [
-  ["Android + iOS overview","Use case","\"With Site24x7's instant alerts…\"","\"With OpManager Nexus's instant alerts…\""],
-  ["Admin (Android + iOS)","Device Key","\"push performance metrics to site24x7.com\"","The Nexus endpoint, or drop the domain"],
-  ["Mobile Apps (main)","App Store buttons (iPhone, iPad, TV)","apps.apple.com/…/site24x7/id538759565","Confirm the app Nexus users install"],
-  ["Mobile Apps (main)","Play Store button","com.adventnet.webmon.android (the Site24x7 app)","Same check"],
-  ["Main, Other accounts (Android + iOS)","Related article","www.site24x7.com/mobile-apps.html","A Nexus product page, or remove"],
-  ["Zia (Android + iOS)","LLM integration FAQ","support.site24x7.com/…/how-to-integrate-site24x7-with-openai-chatgpt","A Nexus KB article"]
-];
-const SHOTS = [
-  ["try-demo-android.png","Android overview","Large Site24x7 logo and tagline on the welcome screen"],
-  ["try-demo-ios.png","iOS overview","\"ManageEngine Site24x7\" logo and tagline"],
-  ["ios27-operations-view-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
-  ["ios27-monitor-group-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
-  ["ios27-assign-technician.png","Latest iOS features","\"Site24x7\" in the Spotlight result"],
-  ["ios-mobile-notification-settings.png","iOS settings","Every tone named \"Site24x7 (Default)\""],
-  ["android_mobile_notifications_os.png","Android settings","System notifications labelled \"Site24x7\""],
-  ["android_mobile_alarms_details.png","Android alarms","Commenter \"Site24x7 - Monitoring Service\""],
-  ["android-mobile-it-automation-notification.png","Android admin","\"…approve the push notification in the Site24x7 Mobile Application\""],
-  ["android-mobile-confirmation-it-automation.png","Android admin","Same dialog, after approval"],
-  ["mobile-app-banner-tv-app.png","Mobile Apps (main)","Small \"Site24x7\" monitor names in the TV NOC View"]
-];
-const CONFIRM = [
-  ["MSP Dashboard and MSP Admin/Operator roles","Main page, Other accounts, Settings","Does Nexus cloud offer MSP accounts?"],
-  ["Business Unit Portal and BU roles","Main page, Other accounts","Does Nexus cloud have Business Units?"],
-  ["Cost Admin and Cost User roles","Main page","Do these roles exist in Nexus?"],
-  ["\"130 global monitoring locations\"","Admin","Is 130 the Nexus figure?"],
-  ["Mobile Network Poller","Admin","Is it available in Nexus?"],
-  ["Real User Monitors; Log Report \"except APM and RUM\"","Monitors, Admin","Does Nexus support RUM and APM?"],
-  ["Sign Up, then add a website URL; \"Try other 160+ Monitors\"","Main page, sign-up screenshot","Can users sign up for Nexus in the app, and is 160+ right?"],
-  ["Try Demo mode","Platform pages","Does the demo show Nexus data?"],
-  ["Monthly Newsletter","Settings","Nexus's newsletter or Site24x7's?"],
-  ["Service Status","Platform pages, Settings","Nexus status or Site24x7 status?"],
-  ["Uptime Button, Public Reports, Operations Dashboard","Admin","Are these Nexus features?"],
-  ["Azure users","Admin","Does Nexus support Azure user sign-in?"],
-  ["Zia \"alert credits\"","Zia screenshot (iOS)","Does Nexus bill alerts in credits?"],
-  ["App Store \"site24x7\" and Play com.adventnet.webmon.android","Main page","Do Nexus users install the Site24x7 app? If so, say so plainly"]
-];
-const NEW_ISSUES = [
-  [1,"iOS overview: no page links to the iOS release notes any more. The link was replaced by an inline section, so the release notes and Latest iOS features pages can't be reached from the iOS help page."],
-  [1,"iOS overview: the inline section covers iOS 26 only, although the release notes list iOS 27 (14 Sep 2026)."],
-  [0,"iOS release notes: the page title reads \"Online OpManager Nexus\", a leftover of \"Online Help Site24x7\"."],
-  [0,"iOS release notes: \"What's new\" is plain text under iOS 26 but a heading under iOS 27."],
-  [0,"Latest iOS features: new stray spaces in \"Monitor Groups .\", \"Home Screen .\" (twice), \"Monitors , Alarms , Dashboard ,\" and \"Alarm Details ,\"."],
-  [0,"Latest iOS features: missing space in \"on the go.Learn how\"."],
-  [0,"Latest iOS features: the assign-technician step drops \"select Done\". Check it against the app."]
-];
-const CARRIED = [
-  [1,"Admin (both): a raw \"global.template\" string key shows as an option label under Monitor Groups."],
-  [1,"Service Status is described two ways: \"the status of your monitors\" (Settings) vs the account domain's service status (platform pages)."],
-  [0,"Conf XML sits on the Android accounts page and the iOS Settings page, and reads like developer material on both."],
-  [0,"iOS Settings text says \"Touch ID/Passcode\", but the app's own screenshot shows \"Face ID/Passcode\"."],
-  [0,"Android Monitors links to \"android-settings\" without \".html\", which returns 404 (on Site24x7 too)."]
-];
-const CHANGES = [
-  ["iOS overview","\"Explore Apple's latest iOS features supported in Site24x7\" + link to release notes","\"Features of iOS 26 with Liquid Glass UI in OpManager Nexus\", an inline iOS 26 feature list with no link"],
-  ["iOS release notes","Release headings H3, \"What's new\" H4","Release headings H2, \"What's new\" H3 (plain text under iOS 26)"],
-  ["Latest iOS features","\"Type your comment.\"","\"Enter and Save your comment.\""],
-  ["Latest iOS features","\"Confirm the assignment is correct, and select Done.\"","\"Confirm the assignment.\""],
-  ["Latest iOS features","\"Open Down Monitor(s)\" etc.","\"Open Down Monitors\" etc."]
-];
-const FIXES = [
-  ["iOS overview","iOS","IT Health and Anomalie widgets","IT Health and Anomaly widgets","Inherited"],
-  ["iOS overview","iOS","different data-centre accounts","different data center accounts","Inherited"],
-  ["iOS overview","iOS","address issues and optimize operations from anywhere promptly","address issues promptly and optimize operations from anywhere","Inherited"],
-  ["Admin","Both","global.template","Template","Inherited"],
-  ["Monitors","iOS","navigate tot he Monitor page","navigate to the Monitor page","Inherited"],
-  ["Monitors","iOS","Monitors Types","Monitor Types","Inherited"],
-  ["Monitors","iOS","PDF Generation: Click the graph icon…","Performance Report: Click the graph icon…","Inherited"],
-  ["More settings","Android","tones for the statues Up, Down…","tones for the statuses Up, Down…","Inherited"],
-  ["More settings","iOS","iOS app: iOS settings","iOS app: Settings","Inherited"],
-  ["Admin","iOS","Clicking theTag icon","Clicking the Tag icon","Inherited"],
-  ["Admin","Both","a Uptime Button","an Uptime Button","Inherited"],
-  ["Admin","Both","a SLA setting","an SLA setting","Inherited"],
-  ["Admin","Android","Section list \"Poller\", heading \"Pollers\"","Use \"Poller\" for both","Inherited"],
-  ["Alarms","iOS","iOS App: Alarms","iOS app: Alarms","Inherited"],
-  ["Alarms","Both","Click the  to assign / Click on the to assign","Tap the Assign Technician icon to assign","Inherited"],
-  ["Other accounts","Both","Logging in with your MSP account, will take you","Logging in with your MSP account will take you","Inherited"],
-  ["Other accounts","Android","Alarm's widget","Alarm widget","Inherited"],
-  ["iOS release notes","iOS","iOS 27 | [ 14 September 2026]","iOS 27 — 14 September 2026","Inherited"],
-  ["iOS release notes","iOS","Operations View and Monitor Groups , providing","Operations View and Monitor Groups, providing","Inherited"],
-  ["iOS release notes","iOS","from the Home Screen .","from the Home Screen.","Inherited"],
-  ["iOS release notes","iOS","Monitor Details, Alarm Details , and Anomaly Details","Monitor Details, Alarm Details, and Anomaly Details","Inherited"],
-  ["iOS release notes","iOS","in Down , Critical , or Trouble status","in Down, Critical, or Trouble status","Inherited"],
-  ["iOS release notes","iOS","help documentation .","help documentation.","Inherited"],
-  ["Android + iOS overview","Both","With Site24x7's instant alerts","With OpManager Nexus's instant alerts","New"],
-  ["Admin","Both","push performance metrics to site24x7.com","push performance metrics to OpManager Nexus","New"],
-  ["iOS release notes","iOS","Online OpManager Nexus (page title)","Online Help OpManager Nexus","New"],
-  ["Latest iOS features","iOS","Monitor Groups .","Monitor Groups.","New"],
-  ["Latest iOS features","iOS","Home Screen . (twice)","Home Screen.","New"],
-  ["Latest iOS features","iOS","Monitors , Alarms , Dashboard , and Outages","Monitors, Alarms, Dashboard, and Outages","New"],
-  ["Latest iOS features","iOS","on the go.Learn how","on the go. Learn how","New"]
-];
-
-const VIEWS = {
- summary:{label:"Summary", render:()=>`
-  <section class="panel">
-    <div class="verdict">
-      <div class="card ok"><b>Done well</b><p>Page titles, meta descriptions, headings, role names and all 120 internal links now point to Nexus. 16 of 19 pages are word-for-word identical apart from the rename.</p></div>
-      <div class="card bad"><b>Still Site24x7</b><p>4 text mentions, 9 links (App Store, Play Store, site24x7.com, support.site24x7.com) and 11 screenshots with Site24x7 branding.</p></div>
-      <div class="card ask"><b>Needs a product call</b><p>14 claims copied from Site24x7, such as MSP and BU accounts, 130 locations, RUM and APM, and the Site24x7 app listing, may not be true for Nexus.</p></div>
+    <div style="background:#FBF9F4;border:2px solid #14201C;padding:20px;box-shadow:7px 7px 0 #14201C;display:grid;gap:14px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap">
+        <div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:40px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums">95<span style="color:#6D7C76;font-size:24px">/99</span></div>
+        <div style="font-size:14px;color:#46564F;text-align:right">“Site24x7” mentions renamed</div>
+      </div>
+      <div aria-hidden="true" style="display:grid;grid-template-columns:repeat(33,minmax(0,1fr));gap:3px">
+        <sc-for list="{{ ticksOk }}" as="t" hint-placeholder-count="95"><span style="height:16px;border-radius:2px;background:#0A7863"></span></sc-for>
+        <sc-for list="{{ ticksBad }}" as="t" hint-placeholder-count="4"><span style="height:16px;border-radius:2px;background:#B42318"></span></sc-for>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46564F">
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#0A7863"></span>95 renamed</span>
+        <span style="display:flex;align-items:center;gap:6px"><span style="width:10px;height:10px;border-radius:2px;background:#B42318"></span>4 still say Site24x7</span>
+      </div>
     </div>
-    <div class="block"><h2>Fix these first</h2><ol class="prio">
-      <li><span class="sev crit">High</span><div><h3>App Store and Play Store buttons open the Site24x7 app</h3><p>The listing is literally named "site24x7". Confirm this is the app Nexus users should install. If it is, say so on the page.</p></div></li>
-      <li><span class="sev crit">High</span><div><h3>Device Key still says data goes "to site24x7.com"</h3><p>On both Admin pages. For a Nexus customer that reads as their data going to another product.</p></div></li>
-      <li><span class="sev crit">High</span><div><h3>Nothing links to the iOS release notes</h3><p>The iOS overview's link was replaced by an inline iOS 26 list, so the release notes and the Latest iOS features pages can't be reached from the iOS help page.</p></div></li>
-      <li><span class="sev warn">Medium</span><div><h3>11 screenshots show Site24x7 branding</h3><p>They include the welcome screens, the iOS 27 widgets, notification labels and the IT Automation prompt. Retake them if there's a Nexus-branded build.</p></div></li>
-      <li><span class="sev warn">Medium</span><div><h3>No Site24x7 copy fixes were carried across</h3><p>All 23 known typos, including "global.template", came across unfixed. Fix them once in both sites.</p></div></li>
-    </ol></div>
-  </section>`},
- map:{label:"Page map", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>Page-by-page</h2><p class="intro">Every Site24x7 page has a Nexus page at the same path. No pages were added or removed. Only 3 of 19 pages differ in anything beyond the name.</p>
-    ${table(["Page","Nexus","Site24x7","\"Site24x7\" before → after","Change beyond the rename"],MAP.map(r=>{
-      const paths=r[1].split("|");
-      const nx=paths.length>1?`${link(NX+paths[0],"Android")} · ${link(NX+paths[1],"iOS")}`:link(NX+paths[0],"Open");
-      const s=paths.length>1?`${link(S24+paths[0],"Android")} · ${link(S24+paths[1],"iOS")}`:link(S24+paths[0],"Open");
-      return [esc(r[0]),nx,s,`<span class="q">${esc(r[2])} → ${esc(r[3])}</span>`,esc(r[4])];}))}</div>
-    <div class="block"><h3>Content changes beyond the rename</h3>
-    ${table(["Page","Site24x7","OpManager Nexus"],CHANGES.map(r=>[esc(r[0]),q(r[1]),`<span class="q fix-new">${esc(r[2])}</span>`]))}
-    <p class="intro">Check the three reworded Latest iOS features steps against the Nexus app's actual labels. If they don't match, the Site24x7 wording may be the accurate one.</p></div>
-  </section>`},
- leftovers:{label:"Rename leftovers", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>13 places still say Site24x7</h2><p class="intro">4 are in the text and 9 are links. The branded screenshots are listed separately under Screenshots.</p>
-    ${table(["Page","Where","Now","Change to"],LEFT.map(r=>[esc(r[0]),esc(r[1]),q(r[2]),`<span class="q fix-new">${esc(r[3])}</span>`]))}</div>
-  </section>`},
- shots:{label:"Screenshots", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>11 of 82 screenshots show Site24x7 branding</h2><p class="intro">All 113 images on the Nexus pages (82 screenshots, 31 icons) are byte-for-byte copies of the Site24x7 files. Every screenshot was checked with text recognition and by eye. The other 71 screenshots and all icons show only neutral UI and "Zylker" sample data. Click a screenshot to enlarge it.</p></div>
-    <div class="gallery">${SHOTS.map((s,i)=>`<figure class="shot" style="margin:0"><button data-i="${i}" aria-label="Enlarge ${esc(s[0])}"><img src="images/${s[0]}" alt="${esc(s[2])}" loading="lazy"></button><div><b>${esc(s[1])}</b><span>${esc(s[2])}</span><code>${esc(s[0])}</code></div></figure>`).join("")}</div>
-    <p class="intro">If Nexus users install the Site24x7 app, these screenshots are accurate but look off-brand next to Nexus text. If there's a Nexus-branded build, all 11 need retaking.</p>
-  </section>`, after:()=>{
-    const dlg=document.getElementById("zoom");
-    document.querySelectorAll(".shot button").forEach(b=>b.addEventListener("click",()=>{
-      const s=SHOTS[+b.dataset.i]; document.getElementById("zoom-img").src="images/"+s[0];
-      document.getElementById("zoom-img").alt=s[2]; document.getElementById("zoom-cap").textContent=s[1]+": "+s[2];
-      dlg.showModal?dlg.showModal():dlg.setAttribute("open","");
-    }));
-    dlg.addEventListener("click",()=>dlg.close());
-  }},
- confirm:{label:"Confirm for Nexus", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>Site24x7 claims to confirm</h2><p class="intro">The rename changed only the name. Every claim about what the product offers was copied over unchanged. Each of these is true for Site24x7 and needs a product owner's yes or no for OpManager Nexus cloud.</p>
-    ${table(["Claim carried over","Where","Question for the product team"],CONFIRM.map(r=>r.map(esc)))}</div>
-  </section>`},
- issues:{label:"Issues", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>New on the Nexus side (7)</h2>${issuesList(NEW_ISSUES)}</div>
-    <div class="block"><h2>Carried over from Site24x7</h2><p class="intro">All 23 Site24x7 copy fixes and these content issues appear on the Nexus pages unchanged.</p>${issuesList(CARRIED)}</div>
-  </section>`},
- fixes:{label:"Copy fixes", render:()=>`
-  <section class="panel">
-    <div class="block"><h2>30 copy fixes for the Nexus pages</h2><p class="intro">23 are inherited from Site24x7 (fixing them there helps both sites), and 7 are new on Nexus. Filter or search, and use the button on each row to copy the replacement text.</p>
-      <div class="filters">
-        <input id="fx-q" type="search" placeholder="Search current or suggested text" aria-label="Search fixes">
-        <select id="fx-src" aria-label="Origin"><option value="">All fixes</option><option>Inherited</option><option>New</option></select>
-        <select id="fx-page" aria-label="Page"><option value="">All pages</option>${[...new Set(FIXES.map(f=>f[0]))].map(p=>`<option>${esc(p)}</option>`).join("")}</select>
-        <span class="count" id="fx-count"></span>
-      </div></div>
-    <div id="fx-table"></div>
-  </section>`, after:()=>{
-    const qi=document.getElementById("fx-q"), sr=document.getElementById("fx-src"), pg=document.getElementById("fx-page");
-    const draw=()=>{
-      const s=qi.value.trim().toLowerCase();
-      const rows=FIXES.map((f,i)=>[f,i]).filter(([f])=>(!sr.value||f[4]===sr.value)&&(!pg.value||f[0]===pg.value)&&(!s||(f[2]+" "+f[3]).toLowerCase().includes(s)));
-      document.getElementById("fx-count").textContent=`${rows.length} of ${FIXES.length}`;
-      document.getElementById("fx-table").innerHTML=rows.length?fixList(rows):`<p class="empty">No fixes match. Clear the search or filters.</p>`;
-    };
-    [qi,sr,pg].forEach(el=>el.addEventListener("input",draw));
-    document.getElementById("fx-table").addEventListener("click",e=>{
-      const b=e.target.closest(".copy"); if(!b) return;
-      const done=()=>{b.textContent="Copied";setTimeout(()=>b.textContent="Copy fix",1400)};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(FIXES[+b.dataset.i][3]).then(done).catch(()=>{b.textContent="Select text"})}else{b.textContent="Select text"}
-    });
-    draw();
-  }}
-};
 
-VIEWS.map.count=19;
-VIEWS.leftovers.count=13;
-VIEWS.shots.count=SHOTS.length;
-VIEWS.confirm.count=CONFIRM.length;
-VIEWS.issues.count=NEW_ISSUES.length+CARRIED.length;
-VIEWS.fixes.count=FIXES.length;
-const tabs=document.getElementById("tabs"), view=document.getElementById("view"), keys=Object.keys(VIEWS);
-tabs.innerHTML=keys.map(k=>`<button role="tab" id="t-${k}" data-k="${k}" aria-selected="false"><span>${VIEWS[k].label}</span>${VIEWS[k].count!=null?`<span class="n">${VIEWS[k].count}</span>`:""}</button>`).join("");
-function jumpTop(){const l=document.querySelector(".layout"); const y=l.getBoundingClientRect().top+window.scrollY-70; if(window.scrollY>y) window.scrollTo({top:y});}
-function show(k,push){
-  if(!VIEWS[k]) k="summary";
-  tabs.querySelectorAll("button").forEach(b=>b.setAttribute("aria-selected",b.dataset.k===k));
-  view.innerHTML=VIEWS[k].render(); VIEWS[k].after&&VIEWS[k].after();
-  if(push){ try{history.replaceState(null,"","#"+k)}catch(e){location.hash=k} }
+    <div style="display:grid;gap:14px">
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;border:2px solid #14201C;border-radius:6px;padding:10px 16px;transform:rotate(-1.6deg);background:#FBF9F4">
+        <b style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums">19</b>
+        <span style="font-size:14px;line-height:1.3;color:#46564F">page pairs compared</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;border:2px solid #B42318;border-radius:6px;padding:10px 16px;transform:rotate(1.2deg);background:#FCE8E5;color:#8E1B12">
+        <b style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums">13 + 11</b>
+        <span style="font-size:14px;line-height:1.3">leftover references + branded screenshots</span>
+      </div>
+      <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;border:2px solid #9A5800;border-radius:6px;padding:10px 16px;transform:rotate(-.8deg);background:#FCEFD9;color:#6E3F00">
+        <b style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:30px;line-height:1;font-variant-numeric:tabular-nums">30</b>
+        <span style="font-size:14px;line-height:1.3">copy fixes (23 inherited, 7 new)</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary" data-sec="summary" data-screen-label="01 Summary" style="max-width:1320px;margin:0 auto;padding:64px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:44px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">01</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Summary</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em;text-wrap:balance">The verdict</h2>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:28px 24px">
+    <div style="position:relative;background:#FBF9F4;border:1px solid #D9D2C3;padding:30px 24px 24px;transform:rotate(-1.2deg);box-shadow:0 20px 32px -24px rgba(20,32,28,.45);display:grid;gap:10px;align-content:start">
+      <span aria-hidden="true" style="position:absolute;top:-11px;left:50%;width:96px;height:22px;margin-left:-48px;background:rgba(10,120,99,.25);transform:rotate(-3deg)"></span>
+      <span aria-hidden="true" style="position:absolute;top:8px;right:16px;font-family:'Instrument Serif',serif;font-size:58px;line-height:1;color:#0A7863">✓</span>
+      <b style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#0A7863">Done well</b>
+      <p style="margin:0;font-size:15px;color:#46564F;text-wrap:pretty">Page titles, meta descriptions, headings, role names and all 120 internal links now point to Nexus. 16 of 19 pages are word-for-word identical apart from the rename.</p>
+    </div>
+    <div style="position:relative;background:#FBF9F4;border:1px solid #D9D2C3;padding:30px 24px 24px;transform:rotate(.9deg) translateY(10px);box-shadow:0 20px 32px -24px rgba(20,32,28,.45);display:grid;gap:10px;align-content:start">
+      <span aria-hidden="true" style="position:absolute;top:-11px;left:50%;width:96px;height:22px;margin-left:-48px;background:rgba(180,35,24,.22);transform:rotate(2deg)"></span>
+      <span aria-hidden="true" style="position:absolute;top:8px;right:16px;font-family:'Instrument Serif',serif;font-size:58px;line-height:1;color:#B42318">✕</span>
+      <b style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#B42318">Still Site24x7</b>
+      <p style="margin:0;font-size:15px;color:#46564F;text-wrap:pretty">4 text mentions, 9 links (App Store, Play Store, site24x7.com, support.site24x7.com) and 11 screenshots with Site24x7 branding.</p>
+    </div>
+    <div style="position:relative;background:#FBF9F4;border:1px solid #D9D2C3;padding:30px 24px 24px;transform:rotate(-.5deg);box-shadow:0 20px 32px -24px rgba(20,32,28,.45);display:grid;gap:10px;align-content:start">
+      <span aria-hidden="true" style="position:absolute;top:-11px;left:50%;width:96px;height:22px;margin-left:-48px;background:rgba(154,88,0,.22);transform:rotate(-1.5deg)"></span>
+      <span aria-hidden="true" style="position:absolute;top:6px;right:18px;font-family:'Instrument Serif',serif;font-style:italic;font-size:62px;line-height:1;color:#9A5800">?</span>
+      <b style="font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9A5800">Needs a product call</b>
+      <p style="margin:0;font-size:15px;color:#46564F;text-wrap:pretty">14 claims copied from Site24x7, such as MSP and BU accounts, 130 locations, RUM and APM, and the Site24x7 app listing, may not be true for Nexus.</p>
+    </div>
+  </div>
+
+  <div style="margin-top:72px;display:flex;flex-wrap:wrap;gap:20px 56px;align-items:flex-start">
+    <h3 style="flex:1 1 220px;margin:0;font-weight:700;font-size:clamp(30px,3.6vw,46px);line-height:1;letter-spacing:-.02em">Fix these <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#B42318">first</span></h3>
+    <ol style="flex:3 1 520px;min-width:0;list-style:none;margin:0;padding:0;display:grid">
+      <li style="display:grid;grid-template-columns:clamp(46px,6vw,76px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px dashed #B9B09F">
+        <span style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(42px,5vw,64px);line-height:.85">1</span>
+        <div style="display:grid;gap:6px"><div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span style="border:2px solid #B42318;color:#B42318;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;transform:rotate(-4deg)">High</span><h4 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">App Store and Play Store buttons open the Site24x7 app</h4></div><p style="margin:0;font-size:15px;color:#46564F;max-width:68ch">The listing is literally named "site24x7". Confirm this is the app Nexus users should install. If it is, say so on the page.</p></div>
+      </li>
+      <li style="display:grid;grid-template-columns:clamp(46px,6vw,76px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px dashed #B9B09F">
+        <span style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(42px,5vw,64px);line-height:.85">2</span>
+        <div style="display:grid;gap:6px"><div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span style="border:2px solid #B42318;color:#B42318;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;transform:rotate(3deg)">High</span><h4 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">Device Key still says data goes "to site24x7.com"</h4></div><p style="margin:0;font-size:15px;color:#46564F;max-width:68ch">On both Admin pages. For a Nexus customer that reads as their data going to another product.</p></div>
+      </li>
+      <li style="display:grid;grid-template-columns:clamp(46px,6vw,76px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px dashed #B9B09F">
+        <span style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(42px,5vw,64px);line-height:.85">3</span>
+        <div style="display:grid;gap:6px"><div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span style="border:2px solid #B42318;color:#B42318;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;transform:rotate(-2deg)">High</span><h4 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">Nothing links to the iOS release notes</h4></div><p style="margin:0;font-size:15px;color:#46564F;max-width:68ch">The iOS overview's link was replaced by an inline iOS 26 list, so the release notes and the Latest iOS features pages can't be reached from the iOS help page.</p></div>
+      </li>
+      <li style="display:grid;grid-template-columns:clamp(46px,6vw,76px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px dashed #B9B09F">
+        <span style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(42px,5vw,64px);line-height:.85">4</span>
+        <div style="display:grid;gap:6px"><div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span style="border:2px solid #9A5800;color:#9A5800;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;transform:rotate(4deg)">Medium</span><h4 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">11 screenshots show Site24x7 branding</h4></div><p style="margin:0;font-size:15px;color:#46564F;max-width:68ch">They include the welcome screens, the iOS 27 widgets, notification labels and the IT Automation prompt. Retake them if there's a Nexus-branded build.</p></div>
+      </li>
+      <li style="display:grid;grid-template-columns:clamp(46px,6vw,76px) minmax(0,1fr);gap:16px;padding:22px 0;border-top:1px dashed #B9B09F;border-bottom:1px dashed #B9B09F">
+        <span style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(42px,5vw,64px);line-height:.85">5</span>
+        <div style="display:grid;gap:6px"><div style="display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center"><span style="border:2px solid #9A5800;color:#9A5800;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:4px;transform:rotate(-3deg)">Medium</span><h4 style="margin:0;font-size:20px;font-weight:600;line-height:1.25">No Site24x7 copy fixes were carried across</h4></div><p style="margin:0;font-size:15px;color:#46564F;max-width:68ch">All 23 known typos, including "global.template", came across unfixed. Fix them once in both sites.</p></div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section id="map" data-sec="map" data-screen-label="02 Page map" style="max-width:1320px;margin:0 auto;padding:72px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:36px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">02</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Page map · 19 pairs</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em">Page-by-page</h2>
+      <p style="margin:4px 0 0;font-size:17px;color:#46564F;max-width:64ch;text-wrap:pretty">Every Site24x7 page has a Nexus page at the same path. No pages were added or removed. Only 3 of 19 pages differ in anything beyond the name.</p>
+    </div>
+  </div>
+
+  <div style="border:2px solid #14201C;background:#FBF9F4;overflow-x:auto;box-shadow:8px 8px 0 #14201C">
+    <div style="min-width:900px">
+      <div style="display:grid;grid-template-columns:minmax(170px,1.1fr) minmax(140px,.8fr) minmax(140px,.8fr) minmax(130px,.7fr) minmax(240px,1.8fr);gap:16px;padding:12px 18px;background:#14201C;color:#F1EDE4;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase">
+        <span>Page</span><span>Nexus</span><span>Site24x7</span><span>“Site24x7” before → after</span><span>Change beyond the rename</span>
+      </div>
+      <sc-for list="{{ mapRows }}" as="r" hint-placeholder-count="12">
+        <div style="display:grid;grid-template-columns:minmax(170px,1.1fr) minmax(140px,.8fr) minmax(140px,.8fr) minmax(130px,.7fr) minmax(240px,1.8fr);gap:16px;padding:14px 18px;border-top:1px solid #D9D2C3;align-items:baseline" style-hover="background:#F4EFE3">
+          <span style="font-weight:600;font-size:16px">{{ r.name }}</span>
+          <span style="display:flex;flex-wrap:wrap;gap:4px 12px;font-family:'IBM Plex Mono',monospace;font-size:13px"><sc-for list="{{ r.links }}" as="l" hint-placeholder-count="1"><a href="{{ l.nx }}" target="_blank" rel="noopener">{{ l.label }} ↗</a></sc-for></span>
+          <span style="display:flex;flex-wrap:wrap;gap:4px 12px;font-family:'IBM Plex Mono',monospace;font-size:13px"><sc-for list="{{ r.links }}" as="l" hint-placeholder-count="1"><a href="{{ l.s }}" target="_blank" rel="noopener">{{ l.label }} ↗</a></sc-for></span>
+          <span style="font-family:'IBM Plex Mono',monospace;font-size:14px;display:flex;gap:8px;align-items:baseline;flex-wrap:wrap"><span style="color:#8E1B12;text-decoration:line-through;text-decoration-color:#B42318">{{ r.before }}</span><span style="color:#6D7C76">→</span><sc-if value="{{ r.clean }}"><span style="color:#0A7863;font-weight:600">{{ r.after }}</span></sc-if><sc-if value="{{ r.dirty }}"><span style="color:#FFFFFF;background:#B42318;font-weight:600;padding:0 6px;border-radius:3px">{{ r.after }}</span></sc-if></span>
+          <span style="font-size:15px">
+            <sc-if value="{{ r.changed }}"><span style="display:flex;gap:10px;align-items:baseline"><span style="width:8px;height:8px;border-radius:50%;background:#B42318;flex:none;transform:translateY(-2px)"></span><span>{{ r.note }}</span></span></sc-if>
+            <sc-if value="{{ r.same }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:13px;color:#6D7C76">None</span></sc-if>
+          </span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="margin-top:64px;display:grid;gap:4px">
+    <h3 style="margin:0 0 14px;font-weight:700;font-size:clamp(24px,2.8vw,34px);line-height:1.1;letter-spacing:-.015em">Content changes <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">beyond</span> the rename</h3>
+    <sc-for list="{{ changes }}" as="c" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px 20px;padding:18px 0;border-top:1px dashed #B9B09F;align-items:start">
+        <span style="font-weight:600;font-size:17px">{{ c.page }}</span>
+        <div style="display:grid;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6D7C76">Site24x7</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.55;background:#FCE8E5;color:#8E1B12;padding:8px 11px;border-radius:5px;text-decoration:line-through;text-decoration-color:rgba(142,27,18,.5)">{{ c.before }}</span></div>
+        <div style="display:grid;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6D7C76">OpManager Nexus</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.55;background:#DCF1EB;color:#07513F;padding:8px 11px;border-radius:5px">{{ c.after }}</span></div>
+      </div>
+    </sc-for>
+    <p style="margin:18px 0 0;padding-top:18px;border-top:1px dashed #B9B09F;font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.35;max-width:60ch;text-wrap:pretty">Check the three reworded Latest iOS features steps against the Nexus app's actual labels. If they don't match, the Site24x7 wording may be the accurate one.</p>
+  </div>
+</section>
+
+<section id="leftovers" data-sec="leftovers" data-screen-label="03 Rename leftovers" style="max-width:1320px;margin:0 auto;padding:72px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:36px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">03</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Rename leftovers</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em;text-wrap:balance"><span style="color:#B42318">13 places</span> still say Site24x7</h2>
+      <p style="margin:4px 0 0;font-size:17px;color:#46564F;max-width:64ch">4 are in the text and 9 are links. The branded screenshots are listed separately under Screenshots.</p>
+    </div>
+  </div>
+  <div style="display:grid;gap:12px">
+    <sc-for list="{{ leftovers }}" as="l" hint-placeholder-count="6">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:14px 28px;align-items:center;padding:20px 22px;background:#FBF9F4;border:1px solid #D9D2C3">
+        <div style="display:grid;gap:4px"><span style="font-weight:600;font-size:16px">{{ l.page }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#5E6B66">{{ l.where }}</span></div>
+        <div style="display:grid;gap:6px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6D7C76">Now</span><span style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.55;color:#8E1B12;text-decoration:line-through;text-decoration-color:#B42318;text-decoration-thickness:2px;word-break:break-word">{{ l.now }}</span></div>
+        <div style="display:grid;gap:4px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:#6D7C76">Change to</span><span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;line-height:1.3;color:#07513F"><span style="background:linear-gradient(transparent 58%,#BFE6DA 58%);box-decoration-break:clone;-webkit-box-decoration-break:clone">{{ l.fix }}</span></span></div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="shots" data-sec="shots" data-screen-label="04 Screenshots" style="background:#14201C;color:#E4EDEA;margin-top:88px">
+  <div style="max-width:1320px;margin:0 auto;padding:64px clamp(18px,4vw,40px) 80px">
+    <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #E4EDEA;padding-top:20px;margin-bottom:40px">
+      <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #E4EDEA;letter-spacing:-.04em">04</div>
+      <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#A7B6B1">Screenshots · contact sheet</div>
+        <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em;text-wrap:balance"><span style="color:#F2877C">11 of 82</span> screenshots show Site24x7 branding</h2>
+        <p style="margin:4px 0 0;font-size:17px;color:#A7B6B1;max-width:72ch;text-wrap:pretty">All 113 images on the Nexus pages (82 screenshots, 31 icons) are byte-for-byte copies of the Site24x7 files. Every screenshot was checked with text recognition and by eye. The other 71 screenshots and all icons show only neutral UI and "Zylker" sample data. Click a screenshot to enlarge it.</p>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:36px 22px">
+      <sc-for list="{{ shots }}" as="s" hint-placeholder-count="11">
+        <figure style="margin:0;display:grid;gap:12px;align-content:start">
+          <button type="button" onClick="{{ s.open }}" aria-label="Enlarge {{ s.file }}" style="appearance:none;border:0;padding:8px 9px;background:#0A0F0D;cursor:zoom-in;display:grid;gap:7px;transition:transform .25s ease;border-radius:3px" style-hover="transform:rotate(-2deg) translateY(-6px)">
+            <span aria-hidden="true" style="display:flex;justify-content:space-between"><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span></span>
+            <span style="display:block;aspect-ratio:9/16;background:#1A2622;overflow:hidden"><img src="images/{{ s.file }}" alt="{{ s.caption }}" loading="lazy" style="width:100%;height:100%;object-fit:contain;display:block"></span>
+            <span aria-hidden="true" style="display:flex;justify-content:space-between"><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span><span style="width:9px;height:5px;border-radius:1.5px;background:#33443F"></span></span>
+          </button>
+          <figcaption style="display:grid;gap:4px">
+            <span style="display:flex;gap:8px;align-items:baseline"><span style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#EDB25C">{{ s.num }}</span><b style="font-weight:600;font-size:15px">{{ s.page }}</b></span>
+            <span style="font-size:14px;line-height:1.4;color:#C9D4D0">{{ s.caption }}</span>
+            <code style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#7D8D88;word-break:break-all">{{ s.file }}</code>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+    <p style="margin:56px 0 0;padding-top:20px;border-top:1px dashed #33443F;font-family:'Instrument Serif',serif;font-style:italic;font-size:22px;line-height:1.35;max-width:60ch;color:#E4EDEA;text-wrap:pretty">If Nexus users install the Site24x7 app, these screenshots are accurate but look off-brand next to Nexus text. If there's a Nexus-branded build, all 11 need retaking.</p>
+  </div>
+</section>
+
+<section id="confirm" data-sec="confirm" data-screen-label="05 Confirm for Nexus" style="max-width:1320px;margin:0 auto;padding:80px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:28px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">05</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Confirm for Nexus</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em;text-wrap:balance">Site24x7 claims to <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400;color:#9A5800">confirm</span></h2>
+      <p style="margin:4px 0 0;font-size:17px;color:#46564F;max-width:72ch;text-wrap:pretty">The rename changed only the name. Every claim about what the product offers was copied over unchanged. Each of these is true for Site24x7 and needs a product owner's yes or no for OpManager Nexus cloud.</p>
+    </div>
+  </div>
+  <sc-if value="{{ ballots }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin-bottom:10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#46564F">
+      <span style="background:#14201C;color:#F1EDE4;padding:5px 10px;border-radius:999px">{{ answered }} of 14 answered</span>
+      <span style="color:#0A7863">{{ yesN }} yes</span><span style="color:#B42318">{{ noN }} no</span>
+      <span style="font-family:'Instrument Serif',serif;font-style:italic;font-size:17px;color:#46564F">{{ netNote }}</span>
+      <sc-if value="{{ hasMe }}"><button type="button" onClick="{{ changeMe }}" style="background:none;border:0;padding:4px 0;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#0A7863;text-decoration:underline;text-underline-offset:3px">Change name</button></sc-if>
+    </div>
+    <sc-if value="{{ netError }}"><p role="alert" style="margin:0 0 10px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:#B42318">{{ netErrorText }}</p></sc-if>
+    <sc-if value="{{ asking }}" hint-placeholder-val="{{ false }}">
+      <div role="group" aria-label="Who's answering" style="margin:14px 0 22px;max-width:580px;background:#FBF9F4;border:2px solid #14201C;box-shadow:6px 6px 0 #14201C;padding:20px;display:grid;gap:14px">
+        <div style="display:grid;gap:4px"><b style="font-size:19px;font-weight:700">Who's answering?</b><span style="font-size:14.5px;color:#46564F">Your name appears next to your answers for the whole team. Ask the report owner for the team passcode. You only need to enter it once in this browser.</span></div>
+        <label style="display:grid;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#46564F">Your name<input id="voter-name" type="text" autocomplete="name" maxlength="60" value="{{ draftName }}" onChange="{{ onDraftName }}" style="font-family:'Bricolage Grotesque',sans-serif;font-size:16px;text-transform:none;letter-spacing:0;color:#14201C;background:#FFFFFF;border:2px solid #14201C;border-radius:0;padding:10px 12px"></label>
+        <label style="display:grid;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#46564F">Team passcode<input id="voter-pass" type="password" autocomplete="off" value="{{ draftPass }}" onChange="{{ onDraftPass }}" style="font-family:'IBM Plex Mono',monospace;font-size:16px;text-transform:none;letter-spacing:0;color:#14201C;background:#FFFFFF;border:2px solid #14201C;border-radius:0;padding:10px 12px"></label>
+        <sc-if value="{{ hasAuthErr }}"><p role="alert" style="margin:0;font-size:14.5px;color:#B42318">{{ authErr }}</p></sc-if>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button type="button" onClick="{{ submitMe }}" style="background:#14201C;color:#F1EDE4;border:2px solid #14201C;font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 16px;cursor:pointer;min-height:44px">{{ submitLabel }}</button>
+          <button type="button" onClick="{{ cancelAsk }}" style="background:transparent;color:#14201C;border:2px solid #14201C;font-family:'IBM Plex Mono',monospace;font-size:13px;padding:10px 16px;cursor:pointer;min-height:44px">Cancel</button>
+        </div>
+      </div>
+    </sc-if>
+  </sc-if>
+  <div style="display:grid">
+    <sc-for list="{{ confirm }}" as="c" hint-placeholder-count="14">
+      <div style="display:flex;flex-wrap:wrap;gap:12px 28px;align-items:center;padding:18px 0;border-top:1px dashed #B9B09F">
+        <span style="flex:0 0 32px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#6D7C76">{{ c.num }}</span>
+        <div style="flex:1 1 260px;min-width:0;display:grid;gap:4px"><span style="font-weight:600;font-size:16px;line-height:1.35">{{ c.claim }}</span><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:#5E6B66">{{ c.where }}</span></div>
+        <div style="flex:1 1 260px;min-width:0;font-family:'Instrument Serif',serif;font-style:italic;font-size:21px;line-height:1.25">{{ c.question }}</div>
+        <sc-if value="{{ c.showBallot }}">
+          <div style="display:flex;gap:6px;flex:none">
+            <button type="button" onClick="{{ c.yes }}" aria-pressed="{{ c.isYesStr }}" style="display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 6px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#14201C;min-height:44px">
+              <span style="width:24px;height:24px;border:2px solid #14201C;display:grid;place-items:center;font-family:'Instrument Serif',serif;font-size:26px;line-height:1;color:#0A7863;background:#FBF9F4"><sc-if value="{{ c.isYes }}">✓</sc-if></span>Yes
+            </button>
+            <button type="button" onClick="{{ c.no }}" aria-pressed="{{ c.isNoStr }}" style="display:flex;align-items:center;gap:8px;background:none;border:0;padding:8px 6px;cursor:pointer;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#14201C;min-height:44px">
+              <span style="width:24px;height:24px;border:2px solid #14201C;display:grid;place-items:center;font-family:'Instrument Serif',serif;font-size:24px;line-height:1;color:#B42318;background:#FBF9F4"><sc-if value="{{ c.isNo }}">✕</sc-if></span>No
+            </button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ c.hasTally }}"><div style="flex:1 1 100%;display:flex;flex-wrap:wrap;gap:6px 18px;padding-left:60px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;line-height:1.5">
+          <sc-if value="{{ c.hasYes }}"><span style="color:#0A7863">✓ Yes · {{ c.yesNames }}</span></sc-if>
+          <sc-if value="{{ c.hasNo }}"><span style="color:#B42318">✕ No · {{ c.noNames }}</span></sc-if>
+        </div></sc-if>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section id="issues" data-sec="issues" data-screen-label="06 Issues" style="max-width:1320px;margin:0 auto;padding:80px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:36px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">06</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Issues · 12</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em">New <span style="font-family:'Instrument Serif',serif;font-style:italic;font-weight:400">and</span> inherited</h2>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:#46564F">
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:18px;height:18px;border-radius:50%;background:#B42318;color:#FFFFFF;display:grid;place-items:center;font-size:11px;font-weight:700">!</span>High</span>
+        <span style="display:flex;align-items:center;gap:8px"><span style="width:14px;height:14px;border-radius:50%;border:3px solid #9A5800"></span>Medium</span>
+      </div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:40px">
+    <div style="display:grid;gap:12px;align-content:start">
+      <h3 style="margin:0 0 4px;font-weight:700;font-size:26px;letter-spacing:-.01em">New on the Nexus side (7)</h3>
+      <sc-for list="{{ newIssues }}" as="i" hint-placeholder-count="7">
+        <div style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;padding:14px 16px;background:#FBF9F4;border:1px solid #D9D2C3;font-size:15px;line-height:1.5">
+          <span style="padding-top:2px"><sc-if value="{{ i.crit }}"><span style="width:20px;height:20px;border-radius:50%;background:#B42318;color:#FFFFFF;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700">!</span></sc-if><sc-if value="{{ i.warn }}"><span style="display:block;width:14px;height:14px;margin:3px;border-radius:50%;border:3px solid #9A5800"></span></sc-if></span>
+          <span style="text-wrap:pretty">{{ i.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:grid;gap:12px;align-content:start">
+      <h3 style="margin:0;font-weight:700;font-size:26px;letter-spacing:-.01em">Carried over from Site24x7</h3>
+      <p style="margin:0 0 4px;font-size:15px;color:#46564F">All 23 Site24x7 copy fixes and these content issues appear on the Nexus pages unchanged.</p>
+      <sc-for list="{{ carried }}" as="i" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:22px minmax(0,1fr);gap:12px;padding:14px 16px;background:#FBF9F4;border:1px solid #D9D2C3;font-size:15px;line-height:1.5">
+          <span style="padding-top:2px"><sc-if value="{{ i.crit }}"><span style="width:20px;height:20px;border-radius:50%;background:#B42318;color:#FFFFFF;display:grid;place-items:center;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700">!</span></sc-if><sc-if value="{{ i.warn }}"><span style="display:block;width:14px;height:14px;margin:3px;border-radius:50%;border:3px solid #9A5800"></span></sc-if></span>
+          <span style="text-wrap:pretty">{{ i.text }}</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section id="fixes" data-sec="fixes" data-screen-label="07 Copy fixes" style="max-width:1320px;margin:0 auto;padding:80px clamp(18px,4vw,40px) 16px">
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;gap:12px 28px;border-top:2px solid #14201C;padding-top:20px;margin-bottom:32px">
+    <div aria-hidden="true" style="font-weight:800;font-variation-settings:'wdth' 75;font-size:clamp(84px,12vw,168px);line-height:.78;color:transparent;-webkit-text-stroke:2px #14201C;letter-spacing:-.04em">07</div>
+    <div style="flex:1 1 320px;min-width:0;display:grid;gap:8px">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#46564F">Copy fixes</div>
+      <h2 style="margin:0;font-weight:700;font-size:clamp(32px,4.4vw,58px);line-height:1;letter-spacing:-.02em;text-wrap:balance">30 copy fixes for the Nexus pages</h2>
+      <p style="margin:4px 0 0;font-size:17px;color:#46564F;max-width:72ch;text-wrap:pretty">23 are inherited from Site24x7 (fixing them there helps both sites), and 7 are new on Nexus. Filter or search, and use the button on each row to copy the replacement text.</p>
+    </div>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:18px">
+    <input type="search" value="{{ q }}" onChange="{{ onQ }}" placeholder="Search current or suggested text" aria-label="Search fixes" style="flex:1 1 260px;min-width:0;font-family:'Bricolage Grotesque',sans-serif;font-size:15px;color:#14201C;background:#FBF9F4;border:2px solid #14201C;border-radius:0;padding:11px 14px;outline-color:#0A7863">
+    <div role="group" aria-label="Origin" style="display:flex;border:2px solid #14201C;background:#FBF9F4">
+      <sc-for list="{{ chips }}" as="ch" hint-placeholder-count="3">
+        <sc-if value="{{ ch.on }}"><button type="button" onClick="{{ ch.pick }}" aria-pressed="true" style="border:0;background:#14201C;color:#F1EDE4;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:11px 14px;cursor:pointer">{{ ch.label }}</button></sc-if>
+        <sc-if value="{{ ch.off }}"><button type="button" onClick="{{ ch.pick }}" aria-pressed="false" style="border:0;background:transparent;color:#14201C;font-family:'IBM Plex Mono',monospace;font-size:12.5px;padding:11px 14px;cursor:pointer" style-hover="background:#E7E2D6">{{ ch.label }}</button></sc-if>
+      </sc-for>
+    </div>
+    <select value="{{ page }}" onChange="{{ onPage }}" aria-label="Page" style="font-family:'Bricolage Grotesque',sans-serif;font-size:14px;color:#14201C;background:#FBF9F4;border:2px solid #14201C;border-radius:0;padding:11px 12px;max-width:100%">
+      <option value="">All pages</option>
+      <sc-for list="{{ pages }}" as="pg" hint-placeholder-count="0"><option value="{{ pg }}">{{ pg }}</option></sc-for>
+    </select>
+    <span style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#46564F">{{ shown }} of 30</span>
+  </div>
+  <sc-if value="{{ hasFixes }}" hint-placeholder-val="{{ true }}">
+    <ol style="list-style:none;margin:0;padding:0;display:grid;gap:10px">
+      <sc-for list="{{ fixes }}" as="f" hint-placeholder-count="6">
+        <li style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 18px;align-items:center;padding:16px 18px;background:#FBF9F4;border:1px solid #D9D2C3">
+          <div style="grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;font-size:14px">
+            <b style="font-weight:600">{{ f.page }}</b>
+            <sc-if value="{{ f.isAndroid }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;padding:4px 8px;border-radius:999px;background:#E2F1DD;color:#347F2B">Android</span></sc-if>
+            <sc-if value="{{ f.isIOS }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;padding:4px 8px;border-radius:999px;background:#E0EAFA;color:#2A65C4">iOS</span></sc-if>
+            <sc-if value="{{ f.isBoth }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;padding:4px 8px;border-radius:999px;background:#ECE7F7;color:#6450A6">Both</span></sc-if>
+            <sc-if value="{{ f.isNew }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9A5800">New</span></sc-if>
+            <sc-if value="{{ f.isInherited }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#5E6B66">Inherited</span></sc-if>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px 10px;align-items:center;min-width:0">
+            <del style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.55;background:#FCE8E5;color:#8E1B12;padding:3px 9px;border-radius:5px;text-decoration-color:rgba(142,27,18,.55);word-break:break-word">{{ f.now }}</del>
+            <span aria-label="becomes" style="font-family:'Instrument Serif',serif;font-size:22px;line-height:1;color:#46564F">→</span>
+            <ins style="font-family:'IBM Plex Mono',monospace;font-size:13.5px;line-height:1.55;background:#DCF1EB;color:#07513F;padding:3px 9px;border-radius:5px;text-decoration:none;word-break:break-word">{{ f.fix }}</ins>
+          </div>
+          <button type="button" onClick="{{ f.copy }}" style="justify-self:start;background:transparent;border:2px solid #14201C;color:#14201C;font-family:'IBM Plex Mono',monospace;font-size:12px;padding:8px 12px;cursor:pointer;white-space:nowrap;min-height:40px" style-hover="background:#14201C;color:#F1EDE4">{{ f.copyLabel }}</button>
+        </li>
+      </sc-for>
+    </ol>
+  </sc-if>
+  <sc-if value="{{ noFixes }}" hint-placeholder-val="{{ false }}"><p style="margin:0;padding:22px;border:2px dashed #B9B09F;text-align:center;color:#46564F;font-family:'Instrument Serif',serif;font-style:italic;font-size:20px">No fixes match. Clear the search or filters.</p></sc-if>
+</section>
+
+<footer style="max-width:1320px;margin:72px auto 0;padding:22px clamp(18px,4vw,40px) 140px;display:grid;gap:8px;font-size:13.5px;color:#46564F">
+  <div style="border-top:2px solid #14201C;padding-top:20px;display:grid;gap:8px">
+    <span>Nexus pages fetched 28 Sep 2026 from the staging host www.localmanageengine.com/it-operations-management/cloud-help/native-apps/ (canonical: www.manageengine.com). Site24x7 pages fetched 24–28 Sep 2026 from www.site24x7.com/help/native-apps/.</span>
+    <span>Counts cover page content only, not the menu or footer. For the full Site24x7 review, see <a href="audit/index.html">the Site24x7 Mobile Docs Audit</a>.</span>
+  </div>
+</footer>
+
+<nav aria-label="Sections" style="position:fixed;left:50%;bottom:16px;transform:translateX(-50%);z-index:50;max-width:calc(100% - 24px);overflow-x:auto;scrollbar-width:none;display:flex;gap:2px;padding:6px;background:#14201C;border-radius:999px;box-shadow:0 14px 34px -12px rgba(20,32,28,.55)">
+  <sc-for list="{{ tabs }}" as="t" hint-placeholder-count="7">
+    <sc-if value="{{ t.on }}"><a href="{{ t.href }}" onClick="{{ t.go }}" aria-current="true" style="flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;background:#F1EDE4;color:#14201C;text-decoration:none;font-size:14px;font-weight:600;white-space:nowrap">{{ t.label }}<sc-if value="{{ t.hasCount }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;background:#14201C;color:#F1EDE4;padding:3px 6px;border-radius:999px">{{ t.count }}</span></sc-if></a></sc-if>
+    <sc-if value="{{ t.off }}"><a href="{{ t.href }}" onClick="{{ t.go }}" style="flex:none;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;color:#C9D4D0;text-decoration:none;font-size:14px;font-weight:500;white-space:nowrap" style-hover="color:#FFFFFF;background:#26332F">{{ t.label }}<sc-if value="{{ t.hasCount }}"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;background:#26332F;color:#A7B6B1;padding:3px 6px;border-radius:999px">{{ t.count }}</span></sc-if></a></sc-if>
+  </sc-for>
+</nav>
+
+<sc-if value="{{ zoomOpen }}" hint-placeholder-val="{{ false }}">
+  <div role="dialog" aria-modal="true" aria-label="Screenshot" onClick="{{ closeZoom }}" style="position:fixed;inset:0;z-index:90;background:rgba(6,12,10,.88);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:24px;cursor:zoom-out">
+    <img src="images/{{ zoom.file }}" alt="{{ zoom.caption }}" loading="lazy" style="max-height:82vh;max-width:min(92vw,520px);border-radius:10px;display:block">
+    <p style="margin:0;color:#FFFFFF;font-size:15px;text-align:center">{{ zoom.page }}: {{ zoom.caption }}</p>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;grain&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;marquee&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;ballots&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { q: '', src: '', page: '', copied: -1, zoom: -1, active: 'summary', votes: {},
+    // Shared answers from the Catalyst vote API. net: 'loading' | 'ok' | 'offline'.
+    shared: [], net: 'loading', me: null, ask: null, draftName: '', draftPass: '', authErr: '', netErr: '', saving: false };
+  API = "https://site24x7mom-60070227695.development.catalystserverless.in/server/nexusvotes/";
+  ME_KEY = "nexus-confirm-voter";
+  NX = "https://www.localmanageengine.com/it-operations-management/cloud-help/native-apps/";
+  S24 = "https://www.site24x7.com/help/native-apps/";
+  KEY = "nexus-confirm-ballots";
+  MAP = [
+    ["Mobile Apps (main)","",17,0,"None"],
+    ["Android overview","android/",6,1,"One \"Site24x7's\" left in the use case"],
+    ["iOS overview","ios/",9,1,"Release-notes link replaced by an inline iOS 26 section; one \"Site24x7's\" left"],
+    ["Alarms","android/alarms.html|ios/alarms.html","1, 2",0,"None"],
+    ["Monitors","android/monitors.html|ios/monitors.html","2, 2",0,"None"],
+    ["Reports","android/reports.html|ios/reports.html","1, 1",0,"None"],
+    ["Admin","android/admin.html|ios/admin.html","10, 10","1, 1","\"site24x7.com\" left in Device Key"],
+    ["More settings","android/android-settings.html|ios/ios-settings.html","3, 3",0,"None"],
+    ["Other accounts","android/msp-bu-accounts.html|ios/msp-bu-accounts.html","3, 1",0,"None"],
+    ["Zia","android/zia-bot.html|ios/zia-bot.html","4, 4",0,"None"],
+    ["iOS release notes","ios/release-notes.html",3,0,"Heading levels changed"],
+    ["Latest iOS features","ios/features.html",17,0,"3 steps reworded; new spacing errors"]
+  ];
+  LEFT = [
+    ["Android + iOS overview","Use case","\"With Site24x7's instant alerts…\"","\"With OpManager Nexus's instant alerts…\""],
+    ["Admin (Android + iOS)","Device Key","\"push performance metrics to site24x7.com\"","The Nexus endpoint, or drop the domain"],
+    ["Mobile Apps (main)","App Store buttons (iPhone, iPad, TV)","apps.apple.com/…/site24x7/id538759565","Confirm the app Nexus users install"],
+    ["Mobile Apps (main)","Play Store button","com.adventnet.webmon.android (the Site24x7 app)","Same check"],
+    ["Main, Other accounts (Android + iOS)","Related article","www.site24x7.com/mobile-apps.html","A Nexus product page, or remove"],
+    ["Zia (Android + iOS)","LLM integration FAQ","support.site24x7.com/…/how-to-integrate-site24x7-with-openai-chatgpt","A Nexus KB article"]
+  ];
+  SHOTS = [
+    ["try-demo-android.png","Android overview","Large Site24x7 logo and tagline on the welcome screen"],
+    ["try-demo-ios.png","iOS overview","\"ManageEngine Site24x7\" logo and tagline"],
+    ["ios27-operations-view-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
+    ["ios27-monitor-group-widget.png","Latest iOS features","\"ManageEngine Site24x7\" in the widget header"],
+    ["ios27-assign-technician.png","Latest iOS features","\"Site24x7\" in the Spotlight result"],
+    ["ios-mobile-notification-settings.png","iOS settings","Every tone named \"Site24x7 (Default)\""],
+    ["android_mobile_notifications_os.png","Android settings","System notifications labelled \"Site24x7\""],
+    ["android_mobile_alarms_details.png","Android alarms","Commenter \"Site24x7 - Monitoring Service\""],
+    ["android-mobile-it-automation-notification.png","Android admin","\"…approve the push notification in the Site24x7 Mobile Application\""],
+    ["android-mobile-confirmation-it-automation.png","Android admin","Same dialog, after approval"],
+    ["mobile-app-banner-tv-app.png","Mobile Apps (main)","Small \"Site24x7\" monitor names in the TV NOC View"]
+  ];
+  CONFIRM = [
+    ["MSP Dashboard and MSP Admin/Operator roles","Main page, Other accounts, Settings","Does Nexus cloud offer MSP accounts?"],
+    ["Business Unit Portal and BU roles","Main page, Other accounts","Does Nexus cloud have Business Units?"],
+    ["Cost Admin and Cost User roles","Main page","Do these roles exist in Nexus?"],
+    ["\"130 global monitoring locations\"","Admin","Is 130 the Nexus figure?"],
+    ["Mobile Network Poller","Admin","Is it available in Nexus?"],
+    ["Real User Monitors; Log Report \"except APM and RUM\"","Monitors, Admin","Does Nexus support RUM and APM?"],
+    ["Sign Up, then add a website URL; \"Try other 160+ Monitors\"","Main page, sign-up screenshot","Can users sign up for Nexus in the app, and is 160+ right?"],
+    ["Try Demo mode","Platform pages","Does the demo show Nexus data?"],
+    ["Monthly Newsletter","Settings","Nexus's newsletter or Site24x7's?"],
+    ["Service Status","Platform pages, Settings","Nexus status or Site24x7 status?"],
+    ["Uptime Button, Public Reports, Operations Dashboard","Admin","Are these Nexus features?"],
+    ["Azure users","Admin","Does Nexus support Azure user sign-in?"],
+    ["Zia \"alert credits\"","Zia screenshot (iOS)","Does Nexus bill alerts in credits?"],
+    ["App Store \"site24x7\" and Play com.adventnet.webmon.android","Main page","Do Nexus users install the Site24x7 app? If so, say so plainly"]
+  ];
+  NEW_ISSUES = [
+    [1,"iOS overview: no page links to the iOS release notes any more. The link was replaced by an inline section, so the release notes and Latest iOS features pages can't be reached from the iOS help page."],
+    [1,"iOS overview: the inline section covers iOS 26 only, although the release notes list iOS 27 (14 Sep 2026)."],
+    [0,"iOS release notes: the page title reads \"Online OpManager Nexus\", a leftover of \"Online Help Site24x7\"."],
+    [0,"iOS release notes: \"What's new\" is plain text under iOS 26 but a heading under iOS 27."],
+    [0,"Latest iOS features: new stray spaces in \"Monitor Groups .\", \"Home Screen .\" (twice), \"Monitors , Alarms , Dashboard ,\" and \"Alarm Details ,\"."],
+    [0,"Latest iOS features: missing space in \"on the go.Learn how\"."],
+    [0,"Latest iOS features: the assign-technician step drops \"select Done\". Check it against the app."]
+  ];
+  CARRIED = [
+    [1,"Admin (both): a raw \"global.template\" string key shows as an option label under Monitor Groups."],
+    [1,"Service Status is described two ways: \"the status of your monitors\" (Settings) vs the account domain's service status (platform pages)."],
+    [0,"Conf XML sits on the Android accounts page and the iOS Settings page, and reads like developer material on both."],
+    [0,"iOS Settings text says \"Touch ID/Passcode\", but the app's own screenshot shows \"Face ID/Passcode\"."],
+    [0,"Android Monitors links to \"android-settings\" without \".html\", which returns 404 (on Site24x7 too)."]
+  ];
+  CHANGES = [
+    ["iOS overview","\"Explore Apple's latest iOS features supported in Site24x7\" + link to release notes","\"Features of iOS 26 with Liquid Glass UI in OpManager Nexus\", an inline iOS 26 feature list with no link"],
+    ["iOS release notes","Release headings H3, \"What's new\" H4","Release headings H2, \"What's new\" H3 (plain text under iOS 26)"],
+    ["Latest iOS features","\"Type your comment.\"","\"Enter and Save your comment.\""],
+    ["Latest iOS features","\"Confirm the assignment is correct, and select Done.\"","\"Confirm the assignment.\""],
+    ["Latest iOS features","\"Open Down Monitor(s)\" etc.","\"Open Down Monitors\" etc."]
+  ];
+  FIXES = [
+    ["iOS overview","iOS","IT Health and Anomalie widgets","IT Health and Anomaly widgets","Inherited"],
+    ["iOS overview","iOS","different data-centre accounts","different data center accounts","Inherited"],
+    ["iOS overview","iOS","address issues and optimize operations from anywhere promptly","address issues promptly and optimize operations from anywhere","Inherited"],
+    ["Admin","Both","global.template","Template","Inherited"],
+    ["Monitors","iOS","navigate tot he Monitor page","navigate to the Monitor page","Inherited"],
+    ["Monitors","iOS","Monitors Types","Monitor Types","Inherited"],
+    ["Monitors","iOS","PDF Generation: Click the graph icon…","Performance Report: Click the graph icon…","Inherited"],
+    ["More settings","Android","tones for the statues Up, Down…","tones for the statuses Up, Down…","Inherited"],
+    ["More settings","iOS","iOS app: iOS settings","iOS app: Settings","Inherited"],
+    ["Admin","iOS","Clicking theTag icon","Clicking the Tag icon","Inherited"],
+    ["Admin","Both","a Uptime Button","an Uptime Button","Inherited"],
+    ["Admin","Both","a SLA setting","an SLA setting","Inherited"],
+    ["Admin","Android","Section list \"Poller\", heading \"Pollers\"","Use \"Poller\" for both","Inherited"],
+    ["Alarms","iOS","iOS App: Alarms","iOS app: Alarms","Inherited"],
+    ["Alarms","Both","Click the  to assign / Click on the to assign","Tap the Assign Technician icon to assign","Inherited"],
+    ["Other accounts","Both","Logging in with your MSP account, will take you","Logging in with your MSP account will take you","Inherited"],
+    ["Other accounts","Android","Alarm's widget","Alarm widget","Inherited"],
+    ["iOS release notes","iOS","iOS 27 | [ 14 September 2026]","iOS 27 — 14 September 2026","Inherited"],
+    ["iOS release notes","iOS","Operations View and Monitor Groups , providing","Operations View and Monitor Groups, providing","Inherited"],
+    ["iOS release notes","iOS","from the Home Screen .","from the Home Screen.","Inherited"],
+    ["iOS release notes","iOS","Monitor Details, Alarm Details , and Anomaly Details","Monitor Details, Alarm Details, and Anomaly Details","Inherited"],
+    ["iOS release notes","iOS","in Down , Critical , or Trouble status","in Down, Critical, or Trouble status","Inherited"],
+    ["iOS release notes","iOS","help documentation .","help documentation.","Inherited"],
+    ["Android + iOS overview","Both","With Site24x7's instant alerts","With OpManager Nexus's instant alerts","New"],
+    ["Admin","Both","push performance metrics to site24x7.com","push performance metrics to OpManager Nexus","New"],
+    ["iOS release notes","iOS","Online OpManager Nexus (page title)","Online Help OpManager Nexus","New"],
+    ["Latest iOS features","iOS","Monitor Groups .","Monitor Groups.","New"],
+    ["Latest iOS features","iOS","Home Screen . (twice)","Home Screen.","New"],
+    ["Latest iOS features","iOS","Monitors , Alarms , Dashboard , and Outages","Monitors, Alarms, Dashboard, and Outages","New"],
+    ["Latest iOS features","iOS","on the go.Learn how","on the go. Learn how","New"]
+  ];
+  TABS = [["summary","Summary",null],["map","Page map",19],["leftovers","Rename leftovers",13],["shots","Screenshots",11],["confirm","Confirm for Nexus",14],["issues","Issues",12],["fixes","Copy fixes",30]];
+  PAGES = [...new Set(this.FIXES.map(f => f[0]))];
+  ticker = (() => {
+    const seg = "Site24x7 → OpManager Nexus cloud ✶ 19 page pairs ✶ 95 of 99 mentions renamed ✶ 13 leftover references ✶ 11 branded screenshots ✶ 14 claims to confirm ✶ 30 copy fixes ✶ ";
+    return React.createElement('div', { style: { display: 'flex', width: 'max-content', animation: 'mq 48s linear infinite' } },
+      [0, 1].map(k => React.createElement('span', { key: k, style: { paddingRight: '.5em' } }, seg + seg)));
+  })();
+
+  componentDidMount() {
+    try { const v = JSON.parse(localStorage.getItem(this.KEY) || '{}'); if (v && typeof v === 'object') this.setState({ votes: v }); } catch (e) {}
+    try { const m = JSON.parse(localStorage.getItem(this.ME_KEY) || 'null'); if (m && m.name && m.pass) this.setState({ me: m, draftName: m.name }); } catch (e) {}
+    this.load();
+    this.poll = setInterval(() => { if (!document.hidden) this.load(); }, 30000);
+    if ('IntersectionObserver' in window) {
+      this.io = new IntersectionObserver(es => {
+        const vis = es.filter(e => e.isIntersecting);
+        if (vis.length) this.setState({ active: vis[0].target.dataset.sec });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      document.querySelectorAll('[data-sec]').forEach(el => this.io.observe(el));
+    }
+    // Deep links: sections only exist once the template has rendered, so honour the hash now.
+    const id = location.hash && decodeURIComponent(location.hash.slice(1));
+    const target = id && document.getElementById(id);
+    if (target && target.dataset.sec) requestAnimationFrame(() => { target.scrollIntoView({ behavior: 'auto' }); this.setState({ active: id }); });
+    this.onKey = e => { if (e.key === 'Escape' && this.state.zoom > -1) this.setState({ zoom: -1 }); };
+    window.addEventListener('keydown', this.onKey);
+  }
+  componentWillUnmount() {
+    this.io && this.io.disconnect();
+    clearInterval(this.poll);
+    window.removeEventListener('keydown', this.onKey);
+    clearTimeout(this.ct);
+  }
+  load() {
+    return fetch(this.API, { cache: 'no-store' })
+      .then(r => r.ok ? r.json() : Promise.reject(new Error('HTTP ' + r.status)))
+      .then(d => this.setState({ shared: Array.isArray(d.votes) ? d.votes : [], net: 'ok' }))
+      .catch(() => this.setState(s => ({ net: s.net === 'ok' ? 'ok' : 'offline' })));
+  }
+  mine(i) {
+    const me = this.state.me; if (!me) return undefined;
+    const row = this.state.shared.find(r => r.claim === i && String(r.voter).toLowerCase() === me.name.toLowerCase());
+    return row ? row.vote : undefined;
+  }
+  vote(i, v) {
+    if (this.state.net === 'ok') {
+      if (!this.state.me) return this.setState({ ask: { i, v }, authErr: '' });
+      return this.send(i, this.mine(i) === v ? 'clear' : v, this.state.me);
+    }
+    this.localVote(i, v);
+  }
+  send(i, v, me) {
+    const before = this.state.shared;
+    const rest = before.filter(r => !(r.claim === i && String(r.voter).toLowerCase() === me.name.toLowerCase()));
+    const optimistic = v === 'clear' ? rest : rest.concat({ claim: i, vote: v, voter: me.name });
+    this.setState({ shared: optimistic, netErr: '', saving: true });
+    return fetch(this.API, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ claim: i, vote: v, voter: me.name, passcode: me.pass }) })
+      .then(r => r.json().catch(() => ({})).then(d => ({ ok: r.ok, status: r.status, d })))
+      .then(({ ok, status, d }) => {
+        if (ok) return this.setState({ shared: Array.isArray(d.votes) ? d.votes : optimistic, saving: false });
+        if (status === 401) {
+          try { localStorage.removeItem(this.ME_KEY); } catch (e) {}
+          return this.setState({ shared: before, saving: false, me: null, ask: { i, v: v === 'clear' ? this.mine(i) : v }, draftPass: '', authErr: 'That passcode didn\'t work. Check it with the report owner and try again.' });
+        }
+        this.setState({ shared: before, saving: false, netErr: d.error || 'Your answer wasn\'t saved. Try again.' });
+      })
+      .catch(() => this.setState({ shared: before, saving: false, netErr: 'Couldn\'t reach the vote server, so your answer wasn\'t saved. Try again.' }));
+  }
+  submitMe() {
+    const name = this.state.draftName.replace(/\s+/g, ' ').trim().slice(0, 60), pass = this.state.draftPass.trim();
+    if (!name) return this.setState({ authErr: 'Add your name so the team knows who answered.' });
+    if (!pass) return this.setState({ authErr: 'Enter the team passcode.' });
+    const me = { name, pass }, ask = this.state.ask;
+    try { localStorage.setItem(this.ME_KEY, JSON.stringify(me)); } catch (e) {}
+    this.setState({ me, ask: null, authErr: '', draftPass: '' });
+    if (ask && ask.v) {
+      const cur = this.state.shared.find(r => r.claim === ask.i && String(r.voter).toLowerCase() === name.toLowerCase());
+      this.send(ask.i, cur && cur.vote === ask.v ? 'clear' : ask.v, me);
+    }
+  }
+  localVote(i, v) {
+    this.setState(s => {
+      const votes = { ...s.votes };
+      if (votes[i] === v) delete votes[i]; else votes[i] = v;
+      try { localStorage.setItem(this.KEY, JSON.stringify(votes)); } catch (e) {}
+      return { votes };
+    });
+  }
+  copy(i) {
+    const t = this.FIXES[i][3];
+    const done = () => { this.setState({ copied: i }); clearTimeout(this.ct); this.ct = setTimeout(() => this.setState({ copied: -1 }), 1400); };
+    const fail = () => this.setState({ copied: -2 - i });
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(done).catch(fail); else fail();
+  }
+
+  renderVals() {
+    const p = this.props, s = this.state;
+    const ballots = p.ballots ?? true;
+    const mapRows = this.MAP.map(r => {
+      const paths = r[1].split('|');
+      const links = paths.length > 1
+        ? [{ label: 'Android', nx: this.NX + paths[0], s: this.S24 + paths[0] }, { label: 'iOS', nx: this.NX + paths[1], s: this.S24 + paths[1] }]
+        : [{ label: 'Open', nx: this.NX + paths[0], s: this.S24 + paths[0] }];
+      const after = String(r[3]);
+      const clean = after === '0';
+      return { name: r[0], links, before: String(r[2]), after, clean, dirty: !clean, changed: r[4] !== 'None', same: r[4] === 'None', note: r[4] };
+    });
+    const q = s.q.trim().toLowerCase();
+    const fixes = this.FIXES.map((f, i) => [f, i])
+      .filter(([f]) => (!s.src || f[4] === s.src) && (!s.page || f[0] === s.page) && (!q || (f[2] + ' ' + f[3]).toLowerCase().includes(q)))
+      .map(([f, i]) => ({
+        page: f[0], now: f[2], fix: f[3],
+        isAndroid: f[1] === 'Android', isIOS: f[1] === 'iOS', isBoth: f[1] === 'Both',
+        isNew: f[4] === 'New', isInherited: f[4] === 'Inherited',
+        copyLabel: s.copied === i ? 'Copied' : s.copied === -2 - i ? 'Select text' : 'Copy fix',
+        copy: () => this.copy(i)
+      }));
+    const online = s.net === 'ok';
+    const vals = online ? s.shared.map(r => r.vote) : Object.values(s.votes);
+    const byClaim = i => s.shared.filter(r => r.claim === i);
+    const z = s.zoom > -1 ? this.SHOTS[s.zoom] : null;
+    const issue = arr => arr.map(([c, t]) => ({ crit: !!c, warn: !c, text: t }));
+    return {
+      grain: p.grain ?? true,
+      marquee: p.marquee ?? true,
+      ballots,
+      ticker: this.ticker,
+      ticksOk: Array.from({ length: 95 }, (_, i) => i),
+      ticksBad: [0, 1, 2, 3],
+      mapRows,
+      changes: this.CHANGES.map(c => ({ page: c[0], before: c[1], after: c[2] })),
+      leftovers: this.LEFT.map(l => ({ page: l[0], where: l[1], now: l[2], fix: l[3] })),
+      shots: this.SHOTS.map((sh, i) => ({ file: sh[0], page: sh[1], caption: sh[2], num: '#' + String(i + 1).padStart(2, '0'), open: () => this.setState({ zoom: i }) })),
+      zoomOpen: !!z,
+      zoom: z ? { file: z[0], page: z[1], caption: z[2] } : { file: '', page: '', caption: '' },
+      closeZoom: () => this.setState({ zoom: -1 }),
+      confirm: this.CONFIRM.map((c, i) => {
+        const v = online ? this.mine(i) : s.votes[i];
+        const rows = online ? byClaim(i) : [];
+        const yes = rows.filter(r => r.vote === 'y').map(r => r.voter), no = rows.filter(r => r.vote === 'n').map(r => r.voter);
+        return { num: String(i + 1).padStart(2, '0'), claim: c[0], where: c[1], question: c[2], showBallot: ballots,
+          isYes: v === 'y', isNo: v === 'n', isYesStr: String(v === 'y'), isNoStr: String(v === 'n'),
+          yes: () => this.vote(i, 'y'), no: () => this.vote(i, 'n'),
+          hasTally: yes.length + no.length > 0, hasYes: yes.length > 0, hasNo: no.length > 0,
+          yesNames: yes.join(', '), noNames: no.join(', ') };
+      }),
+      answered: online ? new Set(s.shared.map(r => r.claim)).size : vals.length,
+      netNote: s.net === 'loading' ? 'Loading the team\'s answers…'
+        : online ? (s.me ? 'Shared with the team · answering as ' + s.me.name + (s.saving ? ' · saving…' : '') : 'Shared with the team. Tick an answer to add yours.')
+        : 'The vote server isn\'t reachable, so answers are saved in this browser only.',
+      hasMe: online && !!s.me && !s.ask,
+      changeMe: () => this.setState({ ask: { i: -1, v: null }, draftName: s.me ? s.me.name : '', draftPass: '', authErr: '' }),
+      netError: !!s.netErr, netErrorText: s.netErr,
+      asking: !!s.ask, draftName: s.draftName, draftPass: s.draftPass,
+      onDraftName: e => this.setState({ draftName: e.target.value }),
+      onDraftPass: e => this.setState({ draftPass: e.target.value }),
+      hasAuthErr: !!s.authErr, authErr: s.authErr,
+      submitLabel: s.ask && s.ask.v ? 'Save and answer' : 'Save',
+      submitMe: () => this.submitMe(),
+      cancelAsk: () => this.setState({ ask: null, authErr: '', draftPass: '' }), yesN: vals.filter(v => v === 'y').length, noN: vals.filter(v => v === 'n').length,
+      newIssues: issue(this.NEW_ISSUES),
+      carried: issue(this.CARRIED),
+      q: s.q, page: s.page,
+      onQ: e => this.setState({ q: e.target.value }),
+      onPage: e => this.setState({ page: e.target.value }),
+      chips: [['', 'All'], ['Inherited', 'Inherited'], ['New', 'New']].map(([v, label]) => ({ label, on: s.src === v, off: s.src !== v, pick: () => this.setState({ src: v }) })),
+      pages: this.PAGES,
+      fixes, shown: fixes.length, hasFixes: fixes.length > 0, noFixes: fixes.length === 0,
+      tabs: this.TABS.map(([id, label, count]) => ({ href: '#' + id, label, count, hasCount: count != null, on: s.active === id, off: s.active !== id, go: () => this.setState({ active: id }) }))
+    };
+  }
 }
-tabs.addEventListener("click",e=>{const b=e.target.closest("button"); if(b){show(b.dataset.k,true); jumpTop();}});
-tabs.addEventListener("keydown",e=>{
-  if(!["ArrowRight","ArrowLeft"].includes(e.key)) return;
-  const i=keys.indexOf(document.activeElement.dataset.k); if(i<0) return;
-  const n=keys[(i+(e.key==="ArrowRight"?1:keys.length-1))%keys.length]; show(n,true); document.getElementById("t-"+n).focus();
-});
-window.addEventListener("hashchange",()=>show(location.hash.slice(1)));
-show(location.hash.slice(1)||"summary");
 </script>
 </body>
 </html>
